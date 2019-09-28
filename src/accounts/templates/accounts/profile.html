@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Welcome {{ request.user.username }}</h1>
+
+<a href="{% url 'update' %}">
+	<button>Edit profile</button>
+</a>
+<hr>
+<a href="{% url 'delete' %}">
+	<button>Delete Account</button>
+</a>
+
+{% endblock %}
