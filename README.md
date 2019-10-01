@@ -19,7 +19,7 @@ This is a social media website built using django.
   - **python manage.py makemigrations**
   - **python manage.py migrate**
   
-##### 3.Super user
+##### 3.Super user and Profile
 - Create super user by doing the following:
   - **python manage.py createsuperuser**
   
@@ -28,6 +28,8 @@ This is a social media website built using django.
 - Add the following inside the file:
   - ```SECRET_KEY = 'secret_key_here' ```
   
-##### 5.Running the server
+##### 5.Running the server and Profile
 - Go the folder where your manage.py sits and the following commands to run the server:
   - **python manage.py runserver**
+- Go to django admin, login and make a profile for yourself or create a new using the form at **http://localhost:8000/register/**
+and then your good to go with the site.
