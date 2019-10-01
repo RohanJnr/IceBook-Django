@@ -27,9 +27,9 @@ nav{
 	border-bottom: 2px orangered solid;
 	width: 100%;
 
-	padding: 5px;
+	padding: 6px;
 	width: 100%;
-	padding-bottom: 10px;
+	padding-bottom: 12px;
 	left: 0;
 	right: 0;
 }
@@ -44,6 +44,9 @@ nav a{
 	font-size: 23px;
 	font-weight: 500;
 	color: black;
+}
+nav a:hover{
+	border-bottom: 2px black solid;
 }
 .space{
 	margin-top: 60px;
@@ -91,4 +94,17 @@ footer p{
 
 .space2{
 	margin-bottom: 60px;
+}
+.description{
+	font-size: 20px;
+	font-weight: 400;
+}
+.display-posts{
+	font-weight: 300;
+}
+
+.display-posts a{
+	text-decoration: none;
+	color: coral;
+
 }

@@ -5,7 +5,7 @@
 	<div class="content">
 		<p>IceBook is a social media site inspired by FaceBook.</p>
 		<hr>
-		{% if request.user.is_authenticated %}
+		{% if not request.user.is_authenticated %}
 			<div>
 				Start by Registering <a href="{% url 'register' %}"><button>Register</button></a>
 			</div>
@@ -14,7 +14,7 @@
 			</div>
 		{% else %}
 			<div>
-				Start exploring and have fun <button>Posts</button>
+				Start exploring and have fun <a href="{% url 'display-posts' %}"><button>Posts</button></a>
 			</div>
 		{% endif %}
 	</div>

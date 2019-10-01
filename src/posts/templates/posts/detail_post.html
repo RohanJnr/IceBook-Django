@@ -2,10 +2,11 @@
 {% block content %}
 
 <h1>{{ post.title }}</h1>
-{% if post.image %}
-<img src="{{post.image.url}}">
+{% if post.img %}
+<img src="{{post.img.url}}">
 {% endif %}
 <p>Created at : {{ post.created }}</p>
+<p>Updated at : {{ post.updated }}</p>
 <p>By : {{ post.user }}</p>
 <br>
 <p>{{ post.description }}</p>
