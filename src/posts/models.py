@@ -9,11 +9,14 @@ class Post(models.Model):
 	created = models.DateTimeField(auto_now_add=True, auto_now=False)
 	updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 	img = models.ImageField(upload_to="post_imgs", blank=True, null=True)
-	description = models.TextField(blank=True, null=True)
+	description = models.TextField()
 	slug = models.SlugField(unique=True)
 
 	def __str__(self):
 		return f"{self.user} : {self.title}"
+
+	class Meta:
+		ordering = ['-created']
 
 	def save(self):
 	    super().save()
@@ -21,6 +24,6 @@ class Post(models.Model):
 		    img = Image.open(self.img.path)
 
 		    if img.height > 300 or img.width > 300:
-		        output_size = (400, 400)
+		        output_size = (600, 600)
 		        img.thumbnail(output_size)
 		        img.save(self.img.path)

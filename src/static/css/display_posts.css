@@ -1,0 +1,12 @@
+.container{
+	width: 55%;
+	padding-left: 20%;
+}
+
+.display-posts{
+	margin: 10px;
+	padding: 20px;
+	border-radius: 10px;
+	border: 2px #E2DEDE solid;
+	
+}

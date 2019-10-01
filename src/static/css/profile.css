@@ -15,3 +15,10 @@
 .posts-container hr{
 	width: 80%;
 }
+.profile-posts{
+	margin: 10px;
+	padding: 20px;
+	border-radius: 10px;
+	border: 2px #E2DEDE solid;
+	
+}

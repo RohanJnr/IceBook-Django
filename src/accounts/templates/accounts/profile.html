@@ -27,13 +27,13 @@
 		<div class="posts">
 			
 		{% for post in posts %}
-			<div>
-				<hr>
+			<div class="profile-posts">
 				<h3>{{ post.title }}</h3>
 				<button>Edit</button>
 				<button>Delete</button>
 				<button>archive</button>
 				<p>Created at : {{ post.created }}</p>
+				<p>Updated at : {{ post.updated }}</p>
 				{% if post.img %}
 					<img src="{{ post.img.url }}">
 				{% endif %}
