@@ -15,7 +15,7 @@ This is a social media website built using django.
 - Create a new branch by doing the following:
   - **git checkout -b branch_name**
 ##### 2.Pipenv and migrations
-- Go to directory where the pipfile is and run **pipenv shell**
+- Go to directory where the pipfile is and run **pipenv shell** and follow that command by **pipenv install**
 - Go into the src folder where the manage.py sits and run the following:
   - **python manage.py makemigrations**
   - **python manage.py migrate**
