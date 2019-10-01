@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300&display=swap');
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: white;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+nav{
+	position: fixed;
+	top: 0;
+	background: white;
+	display: grid;
+	grid-template-columns: repeat(9, 1fr);
+	border-bottom: 2px orangered solid;
+	width: 100%;
+
+	padding: 5px;
+	width: 100%;
+	padding-bottom: 10px;
+	left: 0;
+	right: 0;
+}
+nav form{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+
+nav a{
+	text-decoration: none;
+	font-size: 23px;
+	font-weight: 500;
+	color: black;
+}
+.space{
+	margin-top: 60px;
+}
+.top{
+	background: lightgrey;
+	width: 60%;
+	margin: 10px;
+	padding: 15px;
+	border-radius: 5px;
+}
+.content{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 25px;
+	font-weight: 200;
+}
+
+.top h1{
+	font-size: 4rem;
+}
+.content div{
+	margin: 10px;
+}
+
+.brand{
+	color: orange;
+}
+
+footer{
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	background: #2C2F33;
+	color: orangered;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 500;
+	padding: 0;
+}
+footer p{
+	margin: 5px;
+	padding: 0px;
+}
+
+.space2{
+	margin-bottom: 60px;
+}

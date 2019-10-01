@@ -1,3 +1,22 @@
+{% extends "base.html" %}
 {% block content %}
-<h1>Home Page</h1>
+<div class="top">
+	<h1>IceBook <span class="brand">i</span></h1>
+	<div class="content">
+		<p>IceBook is a social media site inspired by FaceBook.</p>
+		<hr>
+		{% if request.user.is_authenticated %}
+			<div>
+				Start by Registering <a href="{% url 'register' %}"><button>Register</button></a>
+			</div>
+			<div>
+				Already have an account? <a href="{% url 'login' %}"><button>Login</button></a>
+			</div>
+		{% else %}
+			<div>
+				Start exploring and have fun <button>Posts</button>
+			</div>
+		{% endif %}
+	</div>
+</div>
 {% endblock %}

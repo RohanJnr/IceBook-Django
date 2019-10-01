@@ -1,14 +1,49 @@
 {% extends "base.html" %}
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+{% endblock %}
 {% block content %}
-
-<h1>Welcome {{ request.user.username }}</h1>
-
-<a href="{% url 'update' %}">
-	<button>Edit profile</button>
-</a>
-<hr>
-<a href="{% url 'delete' %}">
-	<button>Delete Account</button>
-</a>
-
+<div class="master">
+	<div class="user-data">
+		<img src="{{ user.profile.image.url }}">
+		<h3>{{user.username}}</h3>
+		<p>{{ user.profile.bio }}</p>
+		<a href="{% url 'update' %}">
+			<button>Edit profile</button>
+		</a>
+		<br>
+		<a href="{% url 'delete' %}">
+			<button>Delete Account</button>
+		</a>
+		<br>
+		<a href="{% url 'logout' %}">
+			<button>Logout</button>
+		</a>
+	</div>
+	<hr>
+	<div class="posts-container">
+		<h2 class="heading">Your posts</h2>
+		<div class="posts">
+			
+		{% for post in posts %}
+			<div>
+				<hr>
+				<h3>{{ post.title }}</h3>
+				<button>Edit</button>
+				<button>Delete</button>
+				<button>archive</button>
+				<p>Created at : {{ post.created }}</p>
+				{% if post.img %}
+					<img src="{{ post.img.url }}">
+				{% endif %}
+				<p>{{ post.description }}</p>
+				
+				<br>
+			</div>
+		{% endfor %}
+			
+		</div>
+	</div>
+</div>
 {% endblock %}

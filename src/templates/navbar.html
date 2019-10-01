@@ -1,0 +1,35 @@
+<nav class="navbar">
+	<div>
+		<a href="{% url 'home' %}">IceBook</a>
+	</div>
+	{% if request.user.is_authenticated %}
+		<a href="{% url 'display-posts' %}"><div>Posts</div></a>
+	{% else %}
+		<div></div>
+	{% endif %}
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	{% if request.user.is_authenticated %}
+		<div>
+			<a href="{% url 'add-post' %}">New Post</a>
+		</div>
+		<div>
+			<a href="{% url 'profile' %}">Profile</a>
+		</div>
+		<div>
+			<a href="#"><i class="fas fa-search"></i></a>
+		</div>
+	{% else %}
+		<div>
+			<a href="#">About</a>
+		</div>
+		<div>
+			<a href="{% url 'login' %}">Login</a>
+		</div>
+		<div>
+			<a href="{% url 'register' %}">Register</a>	
+		</div>
+	{% endif %}
+</nav>

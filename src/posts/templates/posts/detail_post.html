@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+{% if post.image %}
+<img src="{{post.image.url}}">
+{% endif %}
+<p>Created at : {{ post.created }}</p>
+<p>By : {{ post.user }}</p>
+<br>
+<p>{{ post.description }}</p>
+<hr>
+<br>
+
+{% endblock %}

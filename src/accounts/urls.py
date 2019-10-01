@@ -16,5 +16,6 @@ urlpatterns = [
     ),
     path("profile/", views.profile_view, name="profile"),
     path("update/", views.update_view, name="update"),
-    path("delete/", views.delete_view, name="delete")
+    path("delete/", views.delete_view, name="delete"),
+    path('users/<str:username>', views.display_user_view, name="display")
 ]

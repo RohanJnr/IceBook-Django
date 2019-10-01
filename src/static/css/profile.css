@@ -1,0 +1,17 @@
+.master{
+	display: grid;
+	grid-template-columns: 1fr 1fr 3fr;
+	height: 700px;
+}
+.posts-container{
+	font-size: 17px;
+	text-align: center;
+	max-height: 100%;
+	overflow: auto;
+}
+.heading{
+	font-size: 4rem;
+}
+.posts-container hr{
+	width: 80%;
+}

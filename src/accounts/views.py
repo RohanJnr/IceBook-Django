@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import RegisterForm, UserUpdateForm, ProfileUpdateForm
 from .models import Profile
-
+from posts.models import Post
 
 def register_view(request):
 	if request.method == "POST":
@@ -34,7 +34,10 @@ def create_profile(username):
 @login_required
 def profile_view(request):
 	template_name = "accounts/profile.html"
-	context = {}
+	user_posts = Post.objects.filter(user=request.user)
+	context = {
+		"posts":user_posts,
+	}
 	return render(request, template_name, context)
 
 
@@ -73,4 +76,12 @@ def delete_view(request):
 		return redirect("register")
 	template_name = "accounts/delete.html"
 	context = {}
+	return render(request, template_name, context)
+
+def display_user_view(request, username):
+	user = User.objects.get(username=username)
+	template_name = "accounts/display.html"
+	context = {
+		"user":user,
+	}
 	return render(request, template_name, context)
