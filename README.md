@@ -16,6 +16,7 @@ This is a social media website built using django.
   - **git checkout -b branch_name**
 ##### 2.Pipenv and migrations
 - Go to directory where the pipfile is and run **pipenv install**
+- Activate pipenv by doing **pipenv shell**
 - Go into the src folder where the manage.py sits and run the following:
   - **python manage.py makemigrations**
   - **python manage.py migrate**
