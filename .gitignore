@@ -1,4 +1,8 @@
 # Byte-compiled / optimized / DLL files
+
+post_imgs
+profile_pics
+
 __pycache__/
 *.py[cod]
 *$py.class
