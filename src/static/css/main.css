@@ -76,6 +76,7 @@ nav a:hover{
 }
 
 footer{
+	
 	position: fixed;
     left: 0;
     bottom: 0;
@@ -86,6 +87,8 @@ footer{
 	font-size: 18px;
 	font-weight: 500;
 	padding: 0;
+	margin: 0;
+
 }
 footer p{
 	margin: 5px;
@@ -107,4 +110,13 @@ footer p{
 	text-decoration: none;
 	color: coral;
 
+}
+.post-icon{
+	font-size: 30px;
+	margin: 20px;
+	color: coral;
+}
+
+.post-icon:hover{
+	color: orangered;
 }

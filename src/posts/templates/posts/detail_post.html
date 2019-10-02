@@ -1,16 +1,43 @@
 {% extends "base.html" %}
+{% load static %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">
+{% endblock %}
 {% block content %}
-
-<h1>{{ post.title|title }}</h1>
-{% if post.img %}
-<img src="{{post.img.url}}">
-{% endif %}
-<p>Created at : {{ post.created }}</p>
-<p>Updated at : {{ post.updated }}</p>
-<p>By : {{ post.user }}</p>
-<br>
-<p>{{ post.description }}</p>
-<hr>
-<br>
+<div class="contain">
+	<h1>{{ post.title|title }}</h1>
+	{% if post.img %}
+	<img src="{{post.img.url}}">
+	{% endif %}
+	<div class="small-stuff">
+		<p>Created : {{ post.created }}</p>
+		<p>Updated : {{ post.updated }}</p>
+		<p>By : {{ post.user }}</p>
+	</div>
+	<br>
+	<p class="description">{{ post.description }}</p>
+	{% if user_like %}
+		<form method="POST">
+			{% csrf_token %}
+			<button name="liked" type="submit"><span class="like_no">{{ like_no }}</span><i class="fas fa-thumbs-up post-icon"></button></i>
+		</form>
+	{% else %}
+		<form method="POST">
+			{% csrf_token %}
+			<button name="notliked" type="submit"><span class="like_no">{{ like_no }}</span><i class="far fa-thumbs-up post-icon"></button></i>
+		</form>
+	{% endif %}
+	<a href="{% url 'add-comment' slug=post.slug %}"><button><i class="fas fa-comments post-icon"></i></button></a>
+	<div class="comments">
+		<h3>Comments :</h3>
+		{% for comment in comments %}
+		<div class="single-comment">
+			<div class="comment-user"><b>{{ comment.user }}</b></div>
+			<p class="comment-time">{{commented_time}}</p>
+			<div class="com">{{ comment.comment }}</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
 
 {% endblock %}

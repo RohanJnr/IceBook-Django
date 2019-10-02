@@ -7,17 +7,28 @@
 <div class="container">
 <h1>All Posts</h1>
 
-{% for post in posts %}
+{% for post, status, like in master_list %}
 <div class="display-posts">
 	<a href="{% url 'detail-post' slug=post.slug %}"><h3>{{ post.title|title }}</h3></a>
-	<p>Created at : {{ post.created }}</p>
-	<p>Updated at : {{ post.updated }}</p>
+	<p>Created : {{ post.created }}</p>
+	<p>Updated : {{ post.updated }}</p>
 	<p>By : {{ post.user }}</p>
 	{% if post.img %}
 		<img src="{{post.img.url}}">
 	{% endif %}
 	<p class="description">{{ post.description|truncatewords:20 }}</p>
-	
+	{% if status %}
+		<form method="POST">
+			{% csrf_token %}
+			<button name="liked {{ post.slug }}" type="submit"><span class="">{{ like }}</span><i class="fas fa-thumbs-up post-icon"></button></i>
+		</form>
+	{% else %}
+		<form method="POST">
+			{% csrf_token %}
+			<button name="notliked {{ post.slug }}" type="submit"><span class="">{{ like }}</span><i class="far fa-thumbs-up post-icon"></button></i>
+		</form>
+	{% endif %}
+	<a href="{% url 'add-comment' slug=post.slug %}"><button><i class="fas fa-comments post-icon"></i></button></a>
 	<br>
 </div>
 
