@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Post, Likes
+from django.db.models import Count
+from .models import Post
 from .forms import PostForm, CommentForm
 
 
@@ -12,6 +13,7 @@ def add_post_view(request):
 			obj = form.save(commit=False)
 			obj.user = request.user
 			obj.save()
+			return redirect("/posts")
 	form = PostForm()
 	template_name = "posts/add_post.html"
 	context = {
@@ -21,78 +23,35 @@ def add_post_view(request):
 
 @login_required
 def display_posts_view(request):
-	if request.method == "POST":
+	posts = Post.objects.annotate(num_comments=Count("comment"))
+	liked = []
+	like_no = []
 
-		request_list = list(request.POST.keys())
-		data = request_list[1]
-		status, slug = data.split(" ")
-		post = Post.objects.get(slug=slug)
-
-		if status == "notliked":
-			like = Likes()
-			like.user = request.user
-			like.post = post
-			like.save()
-
-		elif status == "liked":
-			like = Likes.objects.get(user=request.user)
-			like.delete()
-
-		return redirect("/")
-
-	posts = list(Post.objects.all())
-	status = []
-	likes = []
 	for post in posts:
+		liked.append(check_like(request.user, post)[0])
+		like_no.append(check_like(request.user, post)[1])
 
-		like_no = len(post.likes_set.all())
-		likes.append(like_no)
-		if list(post.likes_set.filter(user=request.user)):
-			status.append(True)
-		else:
-			status.append(False)
 	template_name = "posts/display_posts.html"
-	master_list = zip(posts, status, likes)
+	master_list = zip(posts, liked, like_no)
 	context = {
-		"master_list":master_list
+		"master":master_list
 	}
 	return render(request, template_name, context)
 
 @login_required
 def detail_post_view(request, slug):
 	post = Post.objects.get(slug=slug)
-
-	if request.method == "POST":
-        
-		request_list = list(request.POST.keys())
-		status = str(request_list[1])
-		if status == "notliked":
-			like = Likes()
-			like.user = request.user
-			like.post = post
-			like.save()
-
-		elif status == "liked":
-			like = Likes.objects.get(user=request.user)
-			like.delete()
-
-		return redirect(f"/posts/{slug}")
-
-	likes = post.likes_set.all()
-	like_no = len(likes)
-	user_like = False
-
-	if list(post.likes_set.filter(user=request.user)):
-		user_like = True
-
 	comments = post.comment_set.all()
+	num_comments = len(comments)
 	template_name = "posts/detail_post.html"
+	liked, like_no = check_like(request.user, post)
 
 	context = {
 		"post":post,
 		"comments":comments,
+		"liked":liked,
 		"like_no":like_no,
-		"user_like":user_like
+		"num_comments":num_comments
 	}
 
 	return render(request, template_name, context)
@@ -115,3 +74,23 @@ def comments_view(request, slug):
 	"form":form
 	}
 	return render(request, template_name, context)
+
+def check_like(user, post):
+	likes = post.likes
+	if user in likes.all():
+		return True, len(likes.all())
+	return False, len(likes.all())
+
+def like_view(request, slug, destination):
+	post = Post.objects.get(slug=slug)
+	liked, like_no = check_like(request.user, post)
+	if liked:
+		post.likes.remove(request.user)
+	else:
+		post.likes.add(request.user)
+	print(post.likes.all())
+	post.save()
+	if destination == "detail":
+		return redirect("detail-post", slug=slug)
+	else:
+		return redirect("display-posts")

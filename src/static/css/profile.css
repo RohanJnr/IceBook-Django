@@ -1,11 +1,11 @@
 .master{
 	display: grid;
-	grid-template-columns: 1fr 1fr 3fr;
+	grid-template-columns: 1fr 1fr 4fr;
 	height: 700px;
 }
 .posts-container{
 	font-size: 17px;
-	text-align: center;
+	text-align: left;
 	max-height: 100%;
 	overflow-y: auto;
 }
@@ -13,10 +13,10 @@
 	font-size: 4rem;
 }
 .posts-container hr{
-	width: 80%;
+	width: 70%;
 }
 .profile-posts{
-	margin: 10px;
+	margin: 5px;
 	padding: 20px;
 	border-radius: 10px;
 	border: 2px #E2DEDE solid;

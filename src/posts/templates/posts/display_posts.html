@@ -7,7 +7,7 @@
 <div class="container">
 <h1>All Posts</h1>
 
-{% for post, status, like in master_list %}
+{% for post, liked, like_no in master %}
 <div class="display-posts">
 	<a href="{% url 'detail-post' slug=post.slug %}"><h3>{{ post.title|title }}</h3></a>
 	<p>Created : {{ post.created }}</p>
@@ -17,18 +17,18 @@
 		<img src="{{post.img.url}}">
 	{% endif %}
 	<p class="description">{{ post.description|truncatewords:20 }}</p>
-	{% if status %}
-		<form method="POST">
-			{% csrf_token %}
-			<button name="liked {{ post.slug }}" type="submit"><span class="">{{ like }}</span><i class="fas fa-thumbs-up post-icon"></button></i>
-		</form>
+	
+	{% if liked %}
+			<a href="{% url 'like' slug=post.slug destination='display' %}">
+			<button><span class="count">{{like_no}}</span><i class="fas fa-thumbs-up post-icon"></button></i></a>
 	{% else %}
-		<form method="POST">
-			{% csrf_token %}
-			<button name="notliked {{ post.slug }}" type="submit"><span class="">{{ like }}</span><i class="far fa-thumbs-up post-icon"></button></i>
-		</form>
+		<a href="{% url 'like' slug=post.slug destination='display' %}">
+			<button><span class="count">{{like_no}}</span><i class="far fa-thumbs-up post-icon"></button></i></a>
 	{% endif %}
-	<a href="{% url 'add-comment' slug=post.slug %}"><button><i class="fas fa-comments post-icon"></i></button></a>
+
+	<a href="{% url 'add-comment' slug=post.slug %}">
+	<button><span class="count">{{ post.num_comments }}</span><i class="fas fa-comments post-icon"></i></button>
+	</a>
 	<br>
 </div>
 

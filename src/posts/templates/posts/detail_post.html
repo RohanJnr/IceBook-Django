@@ -16,18 +16,17 @@
 	</div>
 	<br>
 	<p class="description">{{ post.description }}</p>
-	{% if user_like %}
-		<form method="POST">
-			{% csrf_token %}
-			<button name="liked" type="submit"><span class="like_no">{{ like_no }}</span><i class="fas fa-thumbs-up post-icon"></button></i>
-		</form>
+	{% if liked %}
+			<a href="{% url 'like' slug=post.slug destination='detail' %}">
+			<button><span class="count">{{like_no}}</span><i class="fas fa-thumbs-up post-icon"></button></i></a>
 	{% else %}
-		<form method="POST">
-			{% csrf_token %}
-			<button name="notliked" type="submit"><span class="like_no">{{ like_no }}</span><i class="far fa-thumbs-up post-icon"></button></i>
-		</form>
+		<a href="{% url 'like' slug=post.slug destination='detail' %}">
+			<button><span class="count">{{like_no}}</span><i class="far fa-thumbs-up post-icon"></button></i></a>
 	{% endif %}
-	<a href="{% url 'add-comment' slug=post.slug %}"><button><i class="fas fa-comments post-icon"></i></button></a>
+	<a href="{% url 'add-comment' slug=post.slug %}">
+		<button><span class="count">{{num_comments}}</span><i class="fas fa-comments post-icon"></i></button>
+	</a>
+
 	<div class="comments">
 		<h3>Comments :</h3>
 		{% for comment in comments %}
