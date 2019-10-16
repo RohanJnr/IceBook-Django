@@ -1,9 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+{% endblock %}
 {% block content %}
-<h1>Login</h1>
-<form method="POST">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit">Login</button>
-</form>
+{% load crispy_forms_tags %}
+<style type="text/css">
+	.asteriskField {
+    	display: none;
+}
+</style>
+<div class="container">
+	<form method="POST">
+		{% csrf_token %}
+		<fieldset>
+		<legend>Login</legend>
+		{{ form|crispy }}
+
+		<button type="submit">Login</button>
+		</fieldset>
+	</form>
+</div>
 {% endblock %}

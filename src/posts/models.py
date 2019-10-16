@@ -24,10 +24,10 @@ class Post(models.Model):
 		if self.img:
 			img = Image.open(self.img.path)
 
-		if img.height > 300 or img.width > 300:
-			output_size = (600, 600)
-			img.thumbnail(output_size)
-			img.save(self.img.path)
+			if img.height > 300 or img.width > 300:
+				output_size = (600, 600)
+				img.thumbnail(output_size)
+				img.save(self.img.path)
 
 
 class Comment(models.Model):

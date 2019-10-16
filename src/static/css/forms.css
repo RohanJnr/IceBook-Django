@@ -1,0 +1,38 @@
+.container{
+	margin: 50px 18%;
+	padding: 20px;
+	font-size: 20px;
+}
+form fieldset{
+	background: #D5A9E7;
+	border: 2px violet solid;
+	padding: 20px;
+}
+form fieldset legend{
+	font-size: 40px;
+	font-weight: bold;
+}
+form label{
+	font-weight: bold;
+	padding-top: 20px;
+}
+form input{
+	margin: 10px 0;
+	padding: 10px;
+	padding-left: 3px;
+	font-size: 15px;
+	font-weight: 500;
+
+}
+form textarea{
+	border: 2px lightgrey solid;
+	margin: 10px 0;
+	padding: 10px;
+	padding-left: 3px;
+	font-size: 15px;
+	font-weight: bold;
+	resize: none;
+}
+form textarea:focus{
+	border: 1.5px skyblue solid;
+}

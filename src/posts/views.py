@@ -94,3 +94,15 @@ def like_view(request, slug, destination):
 		return redirect("detail-post", slug=slug)
 	else:
 		return redirect("display-posts")
+
+@login_required
+def delete_post_view(request, slug):
+	obj = Post.objects.get(slug=slug)
+	if request.method == "POST":
+		obj.delete()
+		return redirect("profile")
+	template_name = "posts/delete_post.html"
+	context = {
+		"post":obj
+	}
+	return render(request, template_name, context)

@@ -1,34 +1,42 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import RegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import RegisterForm, UserUpdateForm, ProfileForm
 from .models import Profile
 from posts.models import Post
 
 def register_view(request):
 	if request.method == "POST":
-		form = RegisterForm(request.POST)
-		if form.is_valid():
-			form.save()
-			username = form.cleaned_data["username"]
-			create_profile(username)
+		register_form = RegisterForm(request.POST)
+		profile_form = ProfileForm(request.POST, request.FILES)
+		if register_form.is_valid() and profile_form.is_valid():
+			register_form.save()
+			username = register_form.cleaned_data["username"]
+			user = User.objects.filter(username=username).first()
+			obj = profile_form.save(commit=False)
+			obj.user = user
+			obj.save()
+			# username = form.cleaned_data["username"]
+			# create_profile(username)
 			return redirect("login")
 
 	else:
-		form = RegisterForm()
+		register_form = RegisterForm()
+		profile_form = ProfileForm()
 
 	template_name = "accounts/register.html"
 	context = {
-	"form":form
+	"register_form":register_form,
+	"profile_form":profile_form
 	}
 	return render(request, template_name, context)
 
 
-def create_profile(username):
-	user = User.objects.filter(username=username).first()
-	user_profile = Profile()
-	user_profile.user = user
-	user_profile.save()
+# def create_profile(username):
+# 	user = User.objects.filter(username=username).first()
+# 	user_profile = Profile()
+# 	user_profile.user = user
+# 	user_profile.save()
 
 
 @login_required
@@ -46,7 +54,7 @@ def update_view(request):
 	if request.method == "POST":
 		user_form = UserUpdateForm(request.POST, instance=request.user)
 
-		profile_form = ProfileUpdateForm(
+		profile_form = ProfileForm(
 			request.POST,
 			request.FILES,
 			instance=request.user.profile
@@ -58,7 +66,7 @@ def update_view(request):
 			return redirect("profile")
 	else:
 		user_form = UserUpdateForm(instance=request.user)
-		profile_form = ProfileUpdateForm(instance=request.user.profile)
+		profile_form = ProfileForm(instance=request.user.profile)
 
 	template_name = "accounts/update.html"
 	context = {

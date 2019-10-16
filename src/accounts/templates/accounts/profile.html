@@ -30,7 +30,7 @@
 			<div class="profile-posts">
 				<h3>{{ post.title }}</h3>
 				<button>Edit</button>
-				<button>Delete</button>
+				<a href="{% url 'delete-post' slug=post.slug %}"><button>Delete</button></a>
 				<button>archive</button>
 				<p>Created at : {{ post.created }}</p>
 				<p>Updated at : {{ post.updated }}</p>
