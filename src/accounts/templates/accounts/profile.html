@@ -29,7 +29,7 @@
 		{% for post in posts %}
 			<div class="profile-posts">
 				<h3>{{ post.title }}</h3>
-				<button>Edit</button>
+				<a href="{% url 'update-post' slug=post.slug %}"><button>Edit</button></a>
 				<a href="{% url 'delete-post' slug=post.slug %}"><button>Delete</button></a>
 				<button>archive</button>
 				<p>Created at : {{ post.created }}</p>

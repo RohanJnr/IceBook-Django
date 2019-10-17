@@ -106,3 +106,19 @@ def delete_post_view(request, slug):
 		"post":obj
 	}
 	return render(request, template_name, context)
+
+@login_required
+def update_post_view(request, slug):
+	obj = Post.objects.get(slug=slug)
+	if request.method == "POST":
+		post = PostForm(request.POST, instance=obj)
+		if post.is_valid():
+			post.save()
+			return redirect("profile")
+
+	form = PostForm(instance=obj)
+	template_name = "posts/update-post.html"
+	context = {
+		"form":form
+	}
+	return render(request, template_name, context)
