@@ -36,4 +36,4 @@ This is a social media website built using django.
 - Go to django admin, login and make a profile for yourself or create a new user using the form at **http://localhost:8000/register/**
 and then your good to go with the site.
 - If you created a new user, make sure your logged in with the new user while working on the project(login at **http://localhost:8000/login/**).
-- If you made a profile for the super user, then your good to go.
+- If you made a profile for the super user from the django admin page, then your good to go.
