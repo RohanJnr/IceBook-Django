@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
+from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import PostForm, CommentForm
 
@@ -24,6 +25,7 @@ def add_post_view(request):
 @login_required
 def display_posts_view(request):
 	posts = Post.objects.annotate(num_comments=Count("comment"))
+	posts = posts.filter(archived=False)
 	liked = []
 	like_no = []
 
@@ -31,11 +33,12 @@ def display_posts_view(request):
 		liked.append(check_like(request.user, post)[0])
 		like_no.append(check_like(request.user, post)[1])
 
-	template_name = "posts/display_posts.html"
 	master_list = zip(posts, liked, like_no)
 	context = {
 		"master":master_list
 	}
+	
+	template_name = "posts/display_posts.html"
 	return render(request, template_name, context)
 
 @login_required
@@ -90,10 +93,9 @@ def like_view(request, slug, destination):
 		post.likes.add(request.user)
 	print(post.likes.all())
 	post.save()
-	if destination == "detail":
-		return redirect("detail-post", slug=slug)
-	else:
-		return redirect("display-posts")
+	print(request.POST)
+	next_url = request.POST.get("next")
+	return redirect(next_url)
 
 @login_required
 def delete_post_view(request, slug):
@@ -122,3 +124,17 @@ def update_post_view(request, slug):
 		"form":form
 	}
 	return render(request, template_name, context)
+
+@login_required
+def archive_post_view(request, slug):
+	obj = Post.objects.get(slug=slug)
+	obj.archived = True
+	obj.save()
+	return redirect("profile")
+
+@login_required
+def unarchive_post_view(request, slug):
+	obj = Post.objects.get(slug=slug)
+	obj.archived = False
+	obj.save()
+	return redirect("profile")

@@ -12,6 +12,7 @@ class Post(models.Model):
 	description = models.TextField()
 	slug = models.SlugField(unique=True)
 	likes = models.ManyToManyField(User, related_name="likes")
+	archived = models.BooleanField(default=False)
 
 	def __str__(self):
 		return f"{self.user} : {self.title}"

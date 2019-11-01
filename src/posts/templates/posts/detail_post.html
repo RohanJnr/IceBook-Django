@@ -16,16 +16,7 @@
 	</div>
 	<br>
 	<p class="description">{{ post.description }}</p>
-	{% if liked %}
-			<a href="{% url 'like' slug=post.slug destination='detail' %}">
-			<button><span class="count">{{like_no}}</span><i class="fas fa-thumbs-up post-icon"></button></i></a>
-	{% else %}
-		<a href="{% url 'like' slug=post.slug destination='detail' %}">
-			<button><span class="count">{{like_no}}</span><i class="far fa-thumbs-up post-icon"></button></i></a>
-	{% endif %}
-	<a href="{% url 'add-comment' slug=post.slug %}">
-		<button><span class="count">{{num_comments}}</span><i class="fas fa-comments post-icon"></i></button>
-	</a>
+	{% include "accounts/likes_logic.html" %}
 
 	<div class="comments">
 		<h3>Comments :</h3>

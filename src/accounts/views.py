@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Count
 from .forms import RegisterForm, UserUpdateForm, ProfileForm
 from .models import Profile
 from posts.models import Post
@@ -31,23 +32,40 @@ def register_view(request):
 	}
 	return render(request, template_name, context)
 
-
-# def create_profile(username):
-# 	user = User.objects.filter(username=username).first()
-# 	user_profile = Profile()
-# 	user_profile.user = user
-# 	user_profile.save()
-
-
 @login_required
 def profile_view(request):
 	template_name = "accounts/profile.html"
-	user_posts = Post.objects.filter(user=request.user)
-	context = {
-		"posts":user_posts,
-	}
+	context = get_posts(False, request.user)
 	return render(request, template_name, context)
 
+@login_required
+def profile_archived_view(request):
+	
+	template_name = "accounts/profile-archived.html"
+	context = get_posts(True, request.user)
+	return render(request, template_name, context)
+
+def get_posts(status, user):
+	posts = Post.objects.annotate(num_comments=Count("comment"))
+	posts = posts.filter(archived=status)
+	liked = []
+	like_no = []
+
+	for post in posts:
+		liked.append(check_like(user, post)[0])
+		like_no.append(check_like(user, post)[1])
+
+	master_list = zip(posts, liked, like_no)
+	context = {
+		"master":master_list
+	}
+	return context
+
+def check_like(user, post):
+	likes = post.likes
+	if user in likes.all():
+		return True, len(likes.all())
+	return False, len(likes.all())
 
 @login_required
 def update_view(request):

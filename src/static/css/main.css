@@ -8,6 +8,7 @@ body {
   font-family: "Quicksand", sans-serif;
   font-weight: 300;
   margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -71,9 +72,16 @@ nav a:hover{
 .content div{
 	margin: 10px;
 }
-
+.heading{
+	display: grid;
+	grid-template-columns: 1fr 700px;
+}
 .brand{
-	color: orange;
+	padding: 0;
+}
+.brand img{
+	width: 200px;
+	height: auto;
 }
 
 footer{
@@ -117,4 +125,7 @@ footer p{
 
 .post-icon:hover{
 	color: orangered;
+}
+a{
+	text-decoration: none;
 }

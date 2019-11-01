@@ -1,0 +1,16 @@
+<div class="user-data">
+	<img src="{{ user.profile.image.url }}">
+	<h3>{{user.username}}</h3>
+	<p>{{ user.profile.bio }}</p>
+	<a href="{% url 'update' %}">
+		<button>Edit profile</button>
+	</a>
+	<br>
+	<a href="{% url 'delete' %}">
+		<button>Delete Account</button>
+	</a>
+	<br>
+	<a href="{% url 'logout' %}">
+		<button>Logout</button>
+	</a>
+</div>

@@ -8,10 +8,10 @@
 	{% include "accounts/profile-left-section.html" %}
 	<hr>
 	<div class="posts-container">
-		<a href="{% url 'profile' %}" class="post-button active">
+		<a href="{% url 'profile' %}" class="post-button">
 			<button>Posts</button>
 		</a>
-		<a href="{% url 'profile-archived' %}" class="post-button">
+		<a href="{% url 'profile-archived' %}" class="post-button active">
 			<button>Archived Posts</button>
 		</a>
 		<div class="posts">
@@ -21,8 +21,8 @@
 				<h3>{{ post.title }}</h3>
 				<a href="{% url 'update-post' slug=post.slug %}"><button>Edit</button></a>
 				<a href="{% url 'delete-post' slug=post.slug %}"><button>Delete</button></a>
-				<a href="{%  url 'archive' slug=post.slug %}">
-				<button>archive</button>
+				<a href="{%  url 'un-archive' slug=post.slug %}">
+				<button>un-archive</button>
 				</a>
 				<p>Created at : {{ post.created }}</p>
 				<p>Updated at : {{ post.updated }}</p>
