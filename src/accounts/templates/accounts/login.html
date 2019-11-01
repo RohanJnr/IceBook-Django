@@ -11,14 +11,18 @@
 }
 </style>
 <div class="container">
-	<form method="POST">
-		{% csrf_token %}
-		<fieldset>
-		<legend>Login</legend>
-		{{ form|crispy }}
+	<div class="img-div">
+		<h2>Login</h2>
+		<img src="/media/IceBookLogo.png">
+	</div>
+	<div class="form-container">
+		<form method="POST">
+			{% csrf_token %}
+			{{ form|crispy }}
 
-		<button type="submit">Login</button>
-		</fieldset>
-	</form>
+			<button type="submit">Login</button>
+			</fieldset>
+		</form>
+	</div>
 </div>
 {% endblock %}

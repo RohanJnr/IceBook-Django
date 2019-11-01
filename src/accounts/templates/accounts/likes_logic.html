@@ -14,5 +14,5 @@
 	<!-- </a> -->
 {% endif %}
 <a href="{% url 'add-comment' slug=post.slug %}">
-	<button><span class="count">{{num_comments}}</span><i class="fas fa-comments post-icon"></i></button>
+	<button><span class="count">{{post.num_comments}}</span><i class="fas fa-comments post-icon"></i></button>
 </a>

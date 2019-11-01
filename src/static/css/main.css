@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=McLaren&display=swap');
 html {
   scroll-behavior: smooth;
 }
 body {
   background: white;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'McLaren', cursive;
   font-weight: 300;
   margin: 0;
   padding: 0;

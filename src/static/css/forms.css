@@ -1,10 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=McLaren&display=swap');
 .container{
-	margin: 50px 18%;
-	padding: 20px;
+	margin: 0 10%;
 	font-size: 20px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.img-div{
+	background-color: #F41E41;
+	text-align: center;
+	font-size: 40px;
+	font-family: 'McLaren', cursive;
+	color: #FFE205;
+
+}
+.img-div img{
+	width: 300px;
+	height: auto;
+}
+.form-container{
+	padding: 30px;
+	background-color: #BF43DF;
 }
 form fieldset{
-	background: #D5A9E7;
 	border: 2px violet solid;
 	padding: 20px;
 }
@@ -17,7 +34,7 @@ form label{
 	padding-top: 20px;
 }
 form input{
-	margin: 10px 0;
+	margin: 40px 0;
 	padding: 10px;
 	padding-left: 3px;
 	font-size: 15px;
@@ -32,7 +49,11 @@ form textarea{
 	font-size: 15px;
 	font-weight: bold;
 	resize: none;
+	border-radius: 10px;
 }
 form textarea:focus{
 	border: 1.5px skyblue solid;
+}
+button{
+	font-size: 30px;
 }

@@ -8,6 +8,8 @@
 	padding: 20px;
 	border-radius: 10px;
 	border: 2px #E2DEDE solid;
+	-webkit-box-shadow: inset 0px 0px 50px -10px #000000; 
+	box-shadow: inset 0px 0px 50px -10px #000000;
 }
 .count{
 	font-size: 18px;
