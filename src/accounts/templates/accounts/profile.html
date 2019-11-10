@@ -11,21 +11,24 @@
 		<a href="{% url 'profile' %}" class="post-button active">
 			<button>Posts</button>
 		</a>
-		<a href="{% url 'profile-archived' %}" class="post-button">
-			<button>Archived Posts</button>
-		</a>
+		{% if content %}
+			<a href="{% url 'profile-archived' %}" class="post-button">
+				<button>Archived Posts</button>
+			</a>
+		{% endif %}
 		<div class="posts">
-			
 		{% for post, liked, like_no in master %}
 			<div class="profile-posts">
 				<h3>{{ post.title }}</h3>
-				<a href="{% url 'update-post' slug=post.slug %}"><button>Edit</button></a>
-				<a href="{% url 'delete-post' slug=post.slug %}"><button>Delete</button></a>
-				<a href="{%  url 'archive' slug=post.slug %}">
-				<button>archive</button>
-				</a>
-				<p>Created at : {{ post.created }}</p>
-				<p>Updated at : {{ post.updated }}</p>
+				{% if content %}
+					<a href="{% url 'update-post' slug=post.slug %}"><button>Edit</button></a>
+					<a href="{% url 'delete-post' slug=post.slug %}"><button>Delete</button></a>
+					<a href="{%  url 'archive' slug=post.slug %}">
+					<button>archive</button>
+					</a>
+				{% endif %}
+				<p class="date">Created at : {{ post.created }}</p>
+				<p class="date">Updated at : {{ post.updated }}</p>
 				{% if post.img %}
 					<img src="{{ post.img.url }}">
 				{% endif %}

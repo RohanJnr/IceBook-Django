@@ -18,5 +18,5 @@ urlpatterns = [
     path("profile/archived", views.profile_archived_view, name="profile-archived"),
     path("update/", views.update_view, name="update"),
     path("delete/", views.delete_view, name="delete"),
-    path('users/<str:username>', views.display_user_view, name="display")
+    path('users/<int:user_id>', views.display_profile, name="display")
 ]

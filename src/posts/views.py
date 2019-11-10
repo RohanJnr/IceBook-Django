@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count
 from django.http import HttpResponseRedirect
+
+
 from .models import Post
 from .forms import PostForm, CommentForm
 
@@ -24,8 +25,7 @@ def add_post_view(request):
 
 @login_required
 def display_posts_view(request):
-	posts = Post.objects.annotate(num_comments=Count("comment"))
-	posts = posts.filter(archived=False)
+	posts = Post.objects.get_posts(False)
 	liked = []
 	like_no = []
 

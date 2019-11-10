@@ -1,4 +1,6 @@
 .contain{
+	-webkit-box-shadow: inset 0px 0px 50px -10px #000000; 
+	box-shadow: inset 0px 0px 50px -10px #000000;
 	text-align: center;
 	margin: 5% 20%;
 	padding: 20px;
@@ -27,4 +29,8 @@
 
 .count{
 	font-size: 25px;
+}
+.comment-heading{
+	text-align: left;
+	margin-left: 20px;
 }

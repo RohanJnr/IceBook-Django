@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.db.models import Count
+
+
 from .forms import RegisterForm, UserUpdateForm, ProfileForm
 from .models import Profile
 from posts.models import Post
@@ -36,18 +37,31 @@ def register_view(request):
 def profile_view(request):
 	template_name = "accounts/profile.html"
 	context = get_posts(False, request.user)
+	context["content"] = True
 	return render(request, template_name, context)
 
 @login_required
+def display_profile(request, user_id):
+	template_name = "accounts/profile.html"
+	user = User.objects.get(pk=user_id)
+	context = get_posts(False, user)
+	if user.pk == request.user.pk:
+		return redirect("profile")
+	else:
+		context["content"] = False
+		context["user"] = user
+		return render(request, template_name, context)
+
+
+@login_required
 def profile_archived_view(request):
-	
 	template_name = "accounts/profile-archived.html"
 	context = get_posts(True, request.user)
 	return render(request, template_name, context)
 
 def get_posts(status, user):
-	posts = Post.objects.annotate(num_comments=Count("comment"))
-	posts = posts.filter(archived=status)
+	posts = Post.objects.get_posts(status)
+	posts = posts.filter(user=user)
 	liked = []
 	like_no = []
 
@@ -102,12 +116,4 @@ def delete_view(request):
 		return redirect("register")
 	template_name = "accounts/delete.html"
 	context = {}
-	return render(request, template_name, context)
-
-def display_user_view(request, username):
-	user = User.objects.get(username=username)
-	template_name = "accounts/display.html"
-	context = {
-		"user":user,
-	}
 	return render(request, template_name, context)

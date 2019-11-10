@@ -12,7 +12,7 @@
 	<div class="small-stuff">
 		<p>Created : {{ post.created }}</p>
 		<p>Updated : {{ post.updated }}</p>
-		<p>By : {{ post.user }}</p>
+		<p>By : <a href="{% url 'display' user_id=post.user.pk %}">{{ post.user }}</a></p>
 	</div>
 	<br>
 	<p class="description">{{ post.description }}</p>
@@ -34,9 +34,8 @@
 	<a href="{% url 'add-comment' slug=post.slug %}">
 		<button><span class="count">{{num_comments}}</span><i class="fas fa-comments post-icon"></i></button>
 	</a>
-
+	<h3 class="comment-heading">Comments :</h3>
 	<div class="comments">
-		<h3>Comments :</h3>
 		{% for comment in comments %}
 		<div class="single-comment">
 			<div class="comment-user"><b>{{ comment.user }}</b></div>

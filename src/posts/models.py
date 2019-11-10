@@ -1,7 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Count
+
+
 from PIL import Image
 
+
+class PostManager(models.Manager):
+
+	def get_posts(self, status):
+		return self.get_queryset().annotate(num_comments=Count("comment")).filter(archived=status)
 
 class Post(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -13,6 +21,8 @@ class Post(models.Model):
 	slug = models.SlugField(unique=True)
 	likes = models.ManyToManyField(User, related_name="likes")
 	archived = models.BooleanField(default=False)
+
+	objects = PostManager()
 
 	def __str__(self):
 		return f"{self.user} : {self.title}"
