@@ -6,7 +6,7 @@ html {
 }
 body {
   background: white;
-  font-family: 'McLaren', cursive;
+  font-family: 'Roboto Condensed', cursive;
   font-weight: 300;
   margin: 0;
   padding: 0;
@@ -119,14 +119,36 @@ footer p{
 
 }
 .post-icon{
-	font-size: 30px;
 	margin: 20px;
-	color: coral;
-}
-
-.post-icon:hover{
 	color: orangered;
 }
 a{
 	text-decoration: none;
+}
+
+button{
+  background-color: #1E99E5;
+  padding: 5px 10px;
+  font-size: 18px;
+  margin: 3px;
+  border:2px #74BDE9 solid;
+  border-radius: 10px;
+  color: yellow;
+  cursor: pointer;
+}
+.del-button{
+  background-color: #DB0826;
+  color: white;
+  border-color: orangered;
+}
+button:hover{
+  -webkit-box-shadow: inset 0px 0px 24px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px 0px 24px 0px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 24px 0px rgba(0,0,0,0.75);
+}
+.help-block{
+	display: none;
+}
+.space-comment{
+	margin-top: 172px;
 }

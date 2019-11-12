@@ -11,18 +11,14 @@
 }
 </style>
 <div class="container">
-	<div class="img-div">
-		<h2>Register</h2>
-		<img src="/media/IceBookLogo.png">
-	</div>
-	<div class="form-container">
-		<form method="POST" enctype="multipart/form-data">
-			{% csrf_token %}
-			{{ register_form|crispy }}
-			{{ profile_form|crispy }}
-			<button type="Submit">Register</button>
-			</fieldset>
-		</form>
-	</div>
+	<form method="POST" enctype="multipart/form-data">
+		<legend>Join Today</legend>
+		<hr>
+		{% csrf_token %}
+		{{ register_form|crispy }}
+		{{ profile_form|crispy }}
+
+		<button type="submit">Add Post</button>
+	</form>
 </div>
 {% endblock %}

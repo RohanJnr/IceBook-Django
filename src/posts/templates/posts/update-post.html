@@ -13,12 +13,9 @@
 <div class="container">
 	<form method="POST" enctype="multipart/form-data">
 		
-		<fieldset>
-			<legend>Join Now</legend>
+		<legend>Update Post</legend>
 		{% csrf_token %}
 		{{ form|crispy }}
-		<button type="Submit">Update</button>
-		</fieldset>
-	</form>
+		<button type="Submit">Update</button>	</form>
 </div>
 {% endblock %}

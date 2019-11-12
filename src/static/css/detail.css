@@ -1,23 +1,30 @@
+body{
+	background-image: url("../images/trees.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 .contain{
-	-webkit-box-shadow: inset 0px 0px 50px -10px #000000; 
-	box-shadow: inset 0px 0px 50px -10px #000000;
+	-webkit-box-shadow: 0px 0px 50px -10px #000000; 
+	box-shadow: 0px 0px 50px -10px #000000;
 	text-align: center;
 	margin: 5% 20%;
 	padding: 20px;
 	border-radius: 10px;
 	border: 2px #E2DEDE solid;
+	background-color: rgba(255, 255, 255, 0.7);
 }
 .small-stuff{
 	font-size: 20px;
 	border-radius: 10px;
-	border: 2px #E2DEDE solid;
+	border: 2px black solid;
 	margin: 0 20%;
 }
 
 .comments{
 	text-align: left;
 	border-radius: 10px;
-	border: 1px #E2DEDE solid;
+	border: 1px black solid;
 	padding: 20px;
 	margin: 20px;
 	max-height: 200px;

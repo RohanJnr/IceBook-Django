@@ -1,55 +1,70 @@
 @import url('https://fonts.googleapis.com/css?family=McLaren&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-image: url("../images/login.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 .container{
-	margin: 0 10%;
+	margin: 7% 22%;
 	font-size: 20px;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	background-color:rgba(255, 255, 255, 0.3);
+	-webkit-box-shadow: 0px 0px 21px 7px #000000; 
+	box-shadow: 0px 0px 21px 7px #000000;
+	border-radius: 20px;
 }
-.img-div{
-	background-color: #F41E41;
-	text-align: center;
-	font-size: 40px;
-	font-family: 'McLaren', cursive;
-	color: #FFE205;
-
-}
-.img-div img{
-	width: 300px;
-	height: auto;
-}
-.form-container{
-	padding: 30px;
-	background-color: #BF43DF;
-}
-form fieldset{
-	border: 2px violet solid;
+form{
+	opacity: 1;
 	padding: 20px;
+	padding-left: 50px;
 }
-form fieldset legend{
-	font-size: 40px;
-	font-weight: bold;
+form legend{
+	font-family: "McLaren";
+	font-size: 45px;
+	font-weight: 500;
+	color: white;
+	text-align: center;
+	margin: 10px;
+	margin-bottom: 20px;
 }
 form label{
-	font-weight: bold;
-	padding-top: 20px;
+	color: white;
+	text-align: left;
+	font-weight: 400;
 }
 form input{
-	margin: 40px 0;
+	color: black;
+	margin-bottom: 40px;
 	padding: 10px;
-	padding-left: 3px;
+	padding-left: 6px;
 	font-size: 15px;
 	font-weight: 500;
 
 }
+form input[type="text"], input[type="password"], input[type="email"]{
+	border-radius: 10px;
+	border: 1px black solid;
+	width: 70%;
+}
+form input[type="file"]{
+	padding: 10px;
+	color: white;
+	background-color: rgba(255, 255, 255, 0.3);
+}
 form textarea{
-	border: 2px lightgrey solid;
-	margin: 10px 0;
+	border: 1px black solid;
+	margin-bottom: 40px;
 	padding: 10px;
 	padding-left: 3px;
 	font-size: 15px;
 	font-weight: bold;
 	resize: none;
 	border-radius: 10px;
+	color: black;
 }
 form textarea:focus{
 	border: 1.5px skyblue solid;

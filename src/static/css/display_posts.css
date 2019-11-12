@@ -1,6 +1,10 @@
+body{
+	background: linear-gradient(45deg, orange, orangered);
+}
 .container{
 	width: 55%;
 	padding-left: 20%;
+
 }
 
 .display-posts{
@@ -8,8 +12,9 @@
 	padding: 20px;
 	border-radius: 10px;
 	border: 2px #E2DEDE solid;
-	-webkit-box-shadow: inset 0px 0px 50px -10px #000000; 
-	box-shadow: inset 0px 0px 50px -10px #000000;
+	-webkit-box-shadow: 0px 0px 50px -10px #000000; 
+	box-shadow: 0px 0px 50px -10px #000000;
+	background-color: rgba(255, 255, 255, 0.7);
 }
 .count{
 	font-size: 18px;

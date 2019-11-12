@@ -1,7 +1,9 @@
 .master{
 	display: grid;
 	grid-template-columns: 1fr 1fr 4fr;
-	height: 700px;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 .posts-container{
 	font-size: 17px;
@@ -43,4 +45,9 @@
 }
 .date{
 	font-size: 13px;
+}
+a{
+	text-decoration: none;
+	color: #FF5D00;
+
 }

@@ -1,11 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+{% endblock %}
 {% block content %}
+{% load crispy_forms_tags %}
+<style type="text/css">
+	.asteriskField {
+    	display: none;
+}
+</style>
+<div class="container">
+	<form method="POST">
+		<legend>New Comment</legend>
+		<hr>
+		{% csrf_token %}
+		{{ form|crispy }}
 
-<h1>Add Comment:</h1>
-<form method="POST">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit">Comment</button>
-</form>
-
+		<button type="submit">Add Comment</button>
+	</form>
+</div>
+<div class="space-comment"></div>
 {% endblock %}

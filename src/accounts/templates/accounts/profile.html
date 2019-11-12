@@ -19,7 +19,7 @@
 		<div class="posts">
 		{% for post, liked, like_no in master %}
 			<div class="profile-posts">
-				<h3>{{ post.title }}</h3>
+				<a href="{% url 'detail-post' slug=post.slug %}"><h3>{{ post.title }}</h3></a>
 				{% if content %}
 					<a href="{% url 'update-post' slug=post.slug %}"><button>Edit</button></a>
 					<a href="{% url 'delete-post' slug=post.slug %}"><button>Delete</button></a>
