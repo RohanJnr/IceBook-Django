@@ -6,7 +6,7 @@
 <p>Title: {{post.title}}</p>
 <form method="POST">
 	{% csrf_token %}
-	<button type="submit">Yes, delete.</button>
+	<button class="del-button" type="submit">Yes, delete.</button>
 	
 </form>
 <a href="{% url 'profile' %}">

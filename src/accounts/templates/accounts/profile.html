@@ -22,7 +22,7 @@
 				<a href="{% url 'detail-post' slug=post.slug %}"><h3>{{ post.title }}</h3></a>
 				{% if content %}
 					<a href="{% url 'update-post' slug=post.slug %}"><button>Edit</button></a>
-					<a href="{% url 'delete-post' slug=post.slug %}"><button>Delete</button></a>
+					<a href="{% url 'delete-post' slug=post.slug %}"><button class="del-button">Delete</button></a>
 					<a href="{%  url 'archive' slug=post.slug %}">
 					<button>archive</button>
 					</a>

@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-
+from .signals import profile_update_signal
 from .forms import RegisterForm, UserUpdateForm, ProfileForm
 from .models import Profile
 from posts.models import Post
+
 
 def register_view(request):
 	if request.method == "POST":
@@ -18,8 +19,6 @@ def register_view(request):
 			obj = profile_form.save(commit=False)
 			obj.user = user
 			obj.save()
-			# username = form.cleaned_data["username"]
-			# create_profile(username)
 			return redirect("login")
 
 	else:
@@ -84,6 +83,7 @@ def check_like(user, post):
 @login_required
 def update_view(request):
 	if request.method == "POST":
+		old_img = request.user.profile.image
 		user_form = UserUpdateForm(request.POST, instance=request.user)
 
 		profile_form = ProfileForm(
@@ -93,8 +93,17 @@ def update_view(request):
 		)
 
 		if user_form.is_valid() and profile_form.is_valid():
+
 			user_form.save()
 			profile_form.save()
+
+			new_img = request.user.profile.image
+
+			profile_update_signal.send(
+				sender=Profile,
+				old_img=old_img,
+				new_img=new_img
+			)
 			return redirect("profile")
 	else:
 		user_form = UserUpdateForm(instance=request.user)

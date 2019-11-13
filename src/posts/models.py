@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Count
+from django.db.models.signals import post_delete
 
+from .signals import delete_pic
 
 from PIL import Image
 
@@ -46,3 +48,6 @@ class Comment(models.Model):
 	post = models.ForeignKey(Post, on_delete=models.CASCADE)
 	commented_time = models.DateTimeField(auto_now_add=True, auto_now=False)
 	comment = models.CharField(max_length=250)
+
+
+post_delete.connect(delete_pic, Post)
