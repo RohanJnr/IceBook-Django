@@ -23,3 +23,6 @@ class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ["bio", "image"]
+
+class SearchForm(forms.Form):
+	name = forms.CharField(label="Search a User", max_length=120)

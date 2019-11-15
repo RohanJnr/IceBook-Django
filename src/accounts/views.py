@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from .signals import profile_update_signal
-from .forms import RegisterForm, UserUpdateForm, ProfileForm
+from .forms import RegisterForm, UserUpdateForm, ProfileForm, SearchForm
 from .models import Profile
 from posts.models import Post
 
@@ -126,3 +126,24 @@ def delete_view(request):
 	template_name = "accounts/delete.html"
 	context = {}
 	return render(request, template_name, context)
+
+@login_required
+def search_users_view(request):
+	template_name = "accounts/search.html"
+	if request.method == "POST":
+		form = SearchForm(request.POST)
+		if form.is_valid():
+			username = form.cleaned_data["name"]
+			users = User.objects.filter(username__icontains=username)
+			context={
+				"form": form,
+				"users": users
+			}
+			return render(request, template_name, context)
+	else:
+		form = SearchForm()
+		context={
+			"form": form
+		}
+		return render(request, template_name, context)
+

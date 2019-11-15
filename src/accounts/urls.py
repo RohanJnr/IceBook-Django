@@ -18,5 +18,6 @@ urlpatterns = [
     path("profile/archived", views.profile_archived_view, name="profile-archived"),
     path("update/", views.update_view, name="update"),
     path("delete/", views.delete_view, name="delete"),
-    path('users/<int:user_id>', views.display_profile, name="display")
+    path('users/<int:user_id>', views.display_profile, name="display"),
+    path("search/", views.search_users_view, name="search")
 ]
