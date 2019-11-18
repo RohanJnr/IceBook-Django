@@ -27,4 +27,4 @@ class Profile(models.Model):
 			img.save(self.image.path)
 
 
-post_delete.connect(delete_profile_pic, Profile)
+# post_delete.connect(delete_profile_pic, Profile)

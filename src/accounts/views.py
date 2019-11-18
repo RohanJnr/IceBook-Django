@@ -87,7 +87,7 @@ def check_like(user, post):
 @login_required
 def update_view(request):
 	if request.method == "POST":
-		old_img = request.user.profile.image
+		# old_img = request.user.profile.image
 		user_form = UserUpdateForm(request.POST, instance=request.user)
 
 		profile_form = ProfileForm(
@@ -101,13 +101,13 @@ def update_view(request):
 			user_form.save()
 			profile_form.save()
 
-			new_img = request.user.profile.image
+			# new_img = request.user.profile.image
 
-			profile_update_signal.send(
-				sender=Profile,
-				old_img=old_img,
-				new_img=new_img
-			)
+			# profile_update_signal.send(
+			# 	sender=Profile,
+			# 	old_img=old_img,
+			# 	new_img=new_img
+			# )
 			messages.success(request, "Your profile has been updated.")
 			return redirect("profile")
 	else:
