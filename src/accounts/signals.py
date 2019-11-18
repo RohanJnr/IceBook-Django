@@ -5,6 +5,7 @@ from django.dispatch import receiver, Signal
 
 def delete_profile_pic(sender, instance, **kwargs):
 	if instance.image:
+		print(instance.image.name)
 		if instance.image.name != "default.png":
 			path = instance.image.path
 			os.remove(path)
