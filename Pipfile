@@ -12,4 +12,4 @@ python-dotenv = "*"
 django-crispy-forms = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
