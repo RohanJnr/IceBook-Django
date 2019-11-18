@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 from .signals import profile_update_signal
 from .forms import RegisterForm, UserUpdateForm, ProfileForm, SearchForm
@@ -11,26 +12,29 @@ from posts.models import Post
 def register_view(request):
 	if request.method == "POST":
 		register_form = RegisterForm(request.POST)
-		profile_form = ProfileForm(request.POST, request.FILES)
-		if register_form.is_valid() and profile_form.is_valid():
+		if register_form.is_valid():
 			register_form.save()
 			username = register_form.cleaned_data["username"]
-			user = User.objects.filter(username=username).first()
-			obj = profile_form.save(commit=False)
-			obj.user = user
-			obj.save()
+			user = User.objects.get(username=username)
+			create_profile(user)
+			messages.success(request, "Account successfully created!")
 			return redirect("login")
+		else:
+			for error in register_form.errors.values():
+				messages.error(request, f'{error}')
 
 	else:
 		register_form = RegisterForm()
-		profile_form = ProfileForm()
 
 	template_name = "accounts/register.html"
 	context = {
-	"register_form":register_form,
-	"profile_form":profile_form
+	"form":register_form
 	}
 	return render(request, template_name, context)
+
+def create_profile(user):
+	p = Profile(user=user)
+	p.save()
 
 @login_required
 def profile_view(request):
@@ -104,6 +108,7 @@ def update_view(request):
 				old_img=old_img,
 				new_img=new_img
 			)
+			messages.success(request, "Your profile has been updated.")
 			return redirect("profile")
 	else:
 		user_form = UserUpdateForm(instance=request.user)
@@ -122,6 +127,7 @@ def delete_view(request):
 		username = request.user.username
 		user = User.objects.get(username=username)
 		user.delete()
+		messages.error(request, f"{user.username}'s account has been deleted.")
 		return redirect("register")
 	template_name = "accounts/delete.html"
 	context = {}

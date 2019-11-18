@@ -15,8 +15,7 @@
 		<legend>Join Today</legend>
 		<hr>
 		{% csrf_token %}
-		{{ register_form|crispy }}
-		{{ profile_form|crispy }}
+		{{ form|crispy }}
 
 		<button type="submit">Register</button>
 	</form>

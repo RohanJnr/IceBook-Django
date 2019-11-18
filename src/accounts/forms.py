@@ -22,7 +22,7 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = ["bio", "image"]
+		fields = ["bio", "image", "website"]
 
 class SearchForm(forms.Form):
-	name = forms.CharField(label="Search a User", max_length=120)
+	name = forms.CharField(label="Username", max_length=120)

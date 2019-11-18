@@ -152,3 +152,54 @@ button:hover{
 .space-comment{
 	margin-top: 172px;
 }
+.search-result{
+	font-size: 18px;
+	color: white;
+}
+.search-result:hover{
+	text-decoration:underline;
+}
+ol{
+	font-weight: bold;
+}
+.search-container{
+	margin: 20px;
+	border-radius: 20px;
+	-webkit-box-shadow: 0px 0px 28px 3px #000000; 
+	box-shadow: 0px 0px 28px 3px #000000;
+	padding: 30px;
+	background: linear-gradient(90deg, #2193b0, #6dd5ed);
+}
+.search-container form{
+	font-size: 20px;
+	font-weight: 500;
+}
+.search-container form input{
+	margin: 5px;
+	padding:6px;
+	font-size: 18px;
+	font-weight: 500;
+	border: #594a4e 2px solid;
+	border-radius: 5px;
+}
+
+.search-container form input:focus{
+	border-color: orange;
+}
+.messages{
+	font-size: 18px;
+	font-weight: 500;
+	margin: 10px 20%;
+	text-align: center;
+	border-radius: 20px;
+	padding: 20px;
+}
+.messages-success{
+	background: rgb(124,252,0);
+}
+.messages-error{
+	background: rgb(220,20,60);
+}
+ul{
+	list-style: none;
+}

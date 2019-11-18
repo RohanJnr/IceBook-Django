@@ -15,6 +15,15 @@
 <body data-media-url="{% get_media_prefix %}">
 	{% include "navbar.html" %}
 	<div class="space"></div>
+	{% if messages %}
+		
+		{% for message in messages %}
+		    <ul class="messages messages-{{ message.tags }}">
+		    	<li>{{ message }}</li>
+		    </ul>
+		 {% endfor %}
+		
+	{% endif %}
 	{% block content %}
 	{% endblock %}
 	<div class="space2"></div>

@@ -1,7 +1,12 @@
 <div class="user-data">
 	<img src="{{ user.profile.image.url }}" alt="Profile">
 	<h3>{{user.username}}</h3>
-	<p>{{ user.profile.bio }}</p>
+	{% if user.profile.bio %}
+		<p>{{ user.profile.bio }}</p>
+	{% endif %}
+	{% if user.profile.website %}
+		<p class="website-link"><a href="{{ user.profile.website }}">{{ user.profile.website }}</a></p>
+	{% endif %}
 	{% if content %}
 		<a href="{% url 'update' %}">
 			<button>Edit profile</button>
@@ -13,6 +18,7 @@
 		<br>
 		<a href="{% url 'logout' %}">
 			<button>Logout</button>
+
 		</a>
 	{% endif %}
 </div>

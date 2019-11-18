@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-
+from django.contrib import messages
 
 from .models import Post
 from .forms import PostForm, CommentForm
@@ -15,6 +15,7 @@ def add_post_view(request):
 			obj = form.save(commit=False)
 			obj.user = request.user
 			obj.save()
+			messages.success(request, "Post has been created.")
 			return redirect("/posts")
 	form = PostForm()
 	template_name = "posts/add_post.html"
@@ -102,6 +103,7 @@ def delete_post_view(request, slug):
 	obj = Post.objects.get(slug=slug)
 	if request.method == "POST":
 		obj.delete()
+		messages.error(request, "Post has been deleted.")
 		return redirect("profile")
 	template_name = "posts/delete_post.html"
 	context = {
@@ -116,6 +118,7 @@ def update_post_view(request, slug):
 		post = PostForm(request.POST, request.FILES, instance=obj)
 		if post.is_valid():
 			post.save()
+			messages.success(request, "Post has been updated.")
 			return redirect("profile")
 
 	form = PostForm(instance=obj)

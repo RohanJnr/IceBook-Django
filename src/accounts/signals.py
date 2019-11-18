@@ -5,9 +5,10 @@ from django.dispatch import receiver, Signal
 
 def delete_profile_pic(sender, instance, **kwargs):
 	if instance.image:
-		path = instance.image.path
-		os.remove(path)
-		print("Profile picture delete!")
+		if instance.image.name != "default.png":
+			path = instance.image.path
+			os.remove(path)
+			print("Profile picture delete!")
 
 profile_update_signal = Signal(providing_args=["old_img", "new_img"])
 
