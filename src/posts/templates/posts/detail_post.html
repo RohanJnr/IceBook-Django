@@ -39,7 +39,7 @@
 		{% for comment in comments %}
 		<div class="single-comment">
 			<div class="comment-user"><b>{{ comment.user }}</b></div>
-			<p class="comment-time">{{commented_time}}</p>
+			<p class="comment-time">{{comment.commented_time}}</p>
 			<div class="com">{{ comment.comment }}</div>
 		</div>
 		{% endfor %}
