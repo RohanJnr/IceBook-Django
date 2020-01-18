@@ -11,6 +11,7 @@
 	<div class="content">
 		<p>IceBook is a social media site inspired by FaceBook.</p>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vulputate ipsum tristique porta scelerisque. Pellentesque consectetur eu sem ut vehicula. </p>
+		<p>More information in the <a href="{% url 'about' %}"><button>About</button></a> page</p>
 		<hr>
 		{% if not request.user.is_authenticated %}
 			<div>

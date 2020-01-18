@@ -1,7 +1,10 @@
 # Byte-compiled / optimized / DLL files
 
+
 post_imgs
 profile_pics
+
+# Deployment
 static_dep
 
 __pycache__/
