@@ -19,9 +19,9 @@
 		{% for post, liked, like_no in master %}
 			<div class="profile-posts">
 				<h3>{{ post.title }}</h3>
-				<a href="{% url 'update-post' slug=post.slug %}"><button>Edit</button></a>
-				<a href="{% url 'delete-post' slug=post.slug %}"><button class="del-button">Delete</button></a>
-				<a href="{%  url 'un-archive' slug=post.slug %}">
+				<a href="{% url 'update-post' pk=post.pk %}"><button>Edit</button></a>
+				<a href="{% url 'delete-post' pk=post.pk %}"><button class="del-button">Delete</button></a>
+				<a href="{%  url 'un-archive' pk=post.pk %}">
 				<button>un-archive</button>
 				</a>
 				<p>Created at : {{ post.created }}</p>

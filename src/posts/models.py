@@ -20,7 +20,6 @@ class Post(models.Model):
 	updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 	img = models.ImageField(upload_to="post_imgs", blank=True, null=True)
 	description = models.TextField()
-	slug = models.SlugField(unique=True)
 	likes = models.ManyToManyField(User, related_name="likes")
 	archived = models.BooleanField(default=False)
 

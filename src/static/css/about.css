@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #5CDB95;
+	font-family: 'ZCOOL QingKe HuangYou', cursive;
+}
+main{
+	background: orange;
+	padding: 200px 200px;
+	padding-top: 50px;
+	margin-top: -50px;
+	height: 17rem;
+	border-bottom: orangered 3px solid;
+	text-align: center;
+}
+main p{
+	margin: 10px;
+	padding: 5px;
+	font-size: 30px;
+}
+main img{
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+}
+section{
+	text-align: center;
+	margin: 10px;
+	padding: 5px;
+}
+section h2{
+	font-size: 40px;
+}
+.project_img img{
+	width: 500px;
+	height: auto;
+	padding: 0;
+	margin: 0;
+}
+.card{
+	background: linear-gradient(45deg, orangered, yellow);
+	margin: 40px 20%;
+	padding: 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+section h3{
+	font-size: 32px;
+	color: grey;
+	padding: 10px;
+}
+.description{
+	text-align: left;
+}
+ul{
+	list-style: square;
+	color: white;
+}
+a{
+	text-decoration: none;
+	color: white;
+}
+.view{
+	font-size: 30px;
+}
+.contact ul{
+	margin: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	font-size: 25px;
+	list-style: none;
+	color: black;
+	grid-column-gap: -30px;
+}

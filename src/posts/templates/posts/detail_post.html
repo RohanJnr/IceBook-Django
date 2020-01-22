@@ -17,21 +17,18 @@
 	<br>
 	<p class="description">{{ post.description }}</p>
 	{% if liked %}
-		<!-- <a href="{% url 'like' slug=post.slug destination='detail' %}"> -->
-		<form method="POST" action="{% url 'like' slug=post.slug destination='detail' %}">
+		<form method="POST" action="{% url 'like' pk=post.pk destination='detail' %}">
 		{% csrf_token %}
 		<button type="submit" name="next" value="{{ request.path }}"><span class="count">{{like_no}}</span><i class="fas fa-thumbs-up post-icon"></button></i>
 		</form>
-		<!-- </a> -->
 	{% else %}
-		<!-- <a href="{% url 'like' slug=post.slug destination='detail' %}"> -->
-		<form method="POST" action="{% url 'like' slug=post.slug destination='detail' %}">
+		<form method="POST" action="{% url 'like' pk=post.pk destination='detail' %}">
 		{% csrf_token %}
 		<button type="submit" name="next" value="{{ request.path }}"><span class="count">{{like_no}}</span><i class="far fa-thumbs-up post-icon"></button></i>
 		</form>
 		<!-- </a> -->
 	{% endif %}
-	<a href="{% url 'add-comment' slug=post.slug %}">
+	<a href="{% url 'add-comment' pk=post.pk %}">
 		<button><span class="count">{{num_comments}}</span><i class="fas fa-comments post-icon"></i></button>
 	</a>
 	<h3 class="comment-heading">Comments :</h3>

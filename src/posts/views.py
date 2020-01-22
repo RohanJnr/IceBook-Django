@@ -43,8 +43,8 @@ def display_posts_view(request):
 	return render(request, template_name, context)
 
 @login_required
-def detail_post_view(request, slug):
-	post = Post.objects.get(slug=slug)
+def detail_post_view(request, pk):
+	post = Post.objects.get(pk=pk)
 	comments = post.comment_set.all()
 	num_comments = len(comments)
 	template_name = "posts/detail_post.html"
@@ -61,16 +61,16 @@ def detail_post_view(request, slug):
 	return render(request, template_name, context)
 
 @login_required
-def comments_view(request, slug):
+def comments_view(request, pk):
 	if request.method == "POST":
 		form = CommentForm(request.POST)
 		if form.is_valid():
 			obj = form.save(commit=False)
-			post = Post.objects.get(slug=slug)
+			post = Post.objects.get(pk=pk)
 			obj.post = post
 			obj.user = request.user
 			obj.save()
-			return redirect(f"/posts/{slug}")
+			return redirect(f"/posts/{pk}")
 
 	form = CommentForm()
 	template_name = "posts/add_comment.html"
@@ -85,8 +85,8 @@ def check_like(user, post):
 		return True, len(likes.all())
 	return False, len(likes.all())
 
-def like_view(request, slug, destination):
-	post = Post.objects.get(slug=slug)
+def like_view(request, pk, destination):
+	post = Post.objects.get(pk=pk)
 	liked, like_no = check_like(request.user, post)
 	if liked:
 		post.likes.remove(request.user)
@@ -99,8 +99,8 @@ def like_view(request, slug, destination):
 	return redirect(next_url)
 
 @login_required
-def delete_post_view(request, slug):
-	obj = Post.objects.get(slug=slug)
+def delete_post_view(request, pk):
+	obj = Post.objects.get(pk=pk)
 	if request.method == "POST":
 		obj.delete()
 		messages.error(request, "Post has been deleted.")
@@ -112,8 +112,8 @@ def delete_post_view(request, slug):
 	return render(request, template_name, context)
 
 @login_required
-def update_post_view(request, slug):
-	obj = Post.objects.get(slug=slug)
+def update_post_view(request, pk):
+	obj = Post.objects.get(pk=pk)
 	if request.method == "POST":
 		post = PostForm(request.POST, request.FILES, instance=obj)
 		if post.is_valid():
@@ -129,15 +129,15 @@ def update_post_view(request, slug):
 	return render(request, template_name, context)
 
 @login_required
-def archive_post_view(request, slug):
-	obj = Post.objects.get(slug=slug)
+def archive_post_view(request, pk):
+	obj = Post.objects.get(pk=pk)
 	obj.archived = True
 	obj.save()
 	return redirect("profile")
 
 @login_required
-def unarchive_post_view(request, slug):
-	obj = Post.objects.get(slug=slug)
+def unarchive_post_view(request, pk):
+	obj = Post.objects.get(pk=pk)
 	obj.archived = False
 	obj.save()
 	return redirect("profile")
