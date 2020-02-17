@@ -25,6 +25,7 @@ urlpatterns = [
     path("about/", main_views.about_page, name="about"),
     path('', include('accounts.urls')),
     path('', include('posts.urls')),
+    path('', include('api.urls'))
 ]
 
 if settings.DEBUG:

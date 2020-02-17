@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'accounts.apps.AccountsConfig',
     'posts.apps.PostsConfig',
+    'api.apps.ApiConfig',
 
     # third party
     'crispy_forms'

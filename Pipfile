@@ -10,9 +10,11 @@ django = ">=2.2.9"
 pillow = "*"
 python-dotenv = "*"
 django-crispy-forms = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.8"
 
 [scripts]
 start = "python src/manage.py runserver"
+migrate = "python src/manage.py migrate"
