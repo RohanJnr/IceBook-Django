@@ -23,9 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", main_views.home_page, name="home"),
     path("about/", main_views.about_page, name="about"),
-    path('', include('accounts.urls')),
-    path('', include('posts.urls')),
-    path('', include('api.urls'))
+    path('', include('icebook.apps.accounts.urls')),
+    path('', include('icebook.apps.posts.urls')),
+    path('', include('icebook.apps.api.urls'))
 ]
 
 if settings.DEBUG:

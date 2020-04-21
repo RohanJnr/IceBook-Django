@@ -44,9 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'accounts.apps.AccountsConfig',
-    'posts.apps.PostsConfig',
-    'api.apps.ApiConfig',
+    'icebook.apps.accounts',
+    'icebook.apps.posts',
+    'icebook.apps.api',
 
     # third party
     'crispy_forms'
@@ -67,7 +67,7 @@ ROOT_URLCONF = 'icebook.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [os.path.join(BASE_DIR, "icebook", "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,10 +132,10 @@ USE_TZ = True
 STATIC_ROOT = 'static_dep'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, "icebook", "static")
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "icebook", "media")
 MEDIA_URL = "/media/"
 
 LOGIN_URL = "login"

@@ -6,7 +6,7 @@ from django.contrib import messages
 from .signals import profile_update_signal
 from .forms import RegisterForm, UserUpdateForm, ProfileForm, SearchForm
 from .models import Profile
-from posts.models import Post
+from icebook.apps.posts.models import Post
 
 
 def register_view(request):

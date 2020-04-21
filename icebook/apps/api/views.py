@@ -1,5 +1,5 @@
-from api.models import Message
-from api.serializers import MessageSerialier
+from .models import Message
+from .serializers import MessageSerialier
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
