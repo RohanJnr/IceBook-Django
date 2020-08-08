@@ -46,7 +46,6 @@ INSTALLED_APPS = [
 
     'icebook.apps.accounts',
     'icebook.apps.posts',
-    'icebook.apps.api',
 
     # third party
     'crispy_forms'
