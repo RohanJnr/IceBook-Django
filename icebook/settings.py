@@ -12,11 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from os.path import join, dirname
-from dotenv import load_dotenv
 
-
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'icebook.apps.accounts',
-    'icebook.apps.posts',
+    # 'icebook.apps.accounts', --> overhaul underway
+    # 'icebook.apps.posts', --> overhaul underway
+
+    'icebook.apps.users',  # replacing accounts app WIP
 
     # third party
     'crispy_forms'
@@ -126,8 +124,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
+AUTH_USER_MODEL = 'users.CustomUser'
+
 STATIC_ROOT = 'static_dep'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [

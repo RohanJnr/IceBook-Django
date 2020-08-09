@@ -3,6 +3,10 @@
 import os
 import sys
 
+from dotenv import load_dotenv
+
+dotenv_path = os.path.join('.env')
+load_dotenv(dotenv_path)
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'icebook.settings')

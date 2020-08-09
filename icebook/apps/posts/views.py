@@ -26,7 +26,7 @@ def add_post_view(request):
 
 @login_required
 def display_posts_view(request):
-	posts = Post.objects.get_posts(False)
+	posts = Post.objects.get_posts(False).order_by("-created")
 	liked = []
 	like_no = []
 
@@ -81,6 +81,8 @@ def comments_view(request, pk):
 
 def check_like(user, post):
 	likes = post.likes
+	print(post)
+	print(f"Printing likes:{likes}")
 	if user in likes.all():
 		return True, len(likes.all())
 	return False, len(likes.all())
