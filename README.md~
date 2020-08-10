@@ -8,7 +8,7 @@ This is a social media website built using django.
 - pipenv 
   - Get it by running **pip install pipenv**
 
-### Setup Guide
+### Setep Guide
 ##### 1.Cloning the repo
 - Clone the repo or fork it and then clone from your profile.
 - Cd into **IceBook-Django**
