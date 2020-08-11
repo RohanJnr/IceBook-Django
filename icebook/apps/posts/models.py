@@ -1,5 +1,5 @@
+from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import User
 from django.db.models import Count
 from django.db.models.signals import post_delete
 
@@ -8,19 +8,21 @@ from .signals import delete_pic
 from PIL import Image
 
 
+USER_MODEL = settings.AUTH_USER_MODEL
+
 class PostManager(models.Manager):
 
 	def get_posts(self, status):
 		return self.get_queryset().annotate(num_comments=Count("comment")).filter(archived=status)
 
 class Post(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE)
 	title = models.CharField(max_length=150)
 	created = models.DateTimeField(auto_now_add=True, auto_now=False)
 	updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 	img = models.ImageField(upload_to="post_imgs", blank=True, null=True)
 	description = models.TextField()
-	likes = models.ManyToManyField(User, related_name="likes")
+	likes = models.ManyToManyField(USER_MODEL, related_name="likes")
 	archived = models.BooleanField(default=False)
 
 	objects = PostManager()
@@ -43,7 +45,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE)
 	post = models.ForeignKey(Post, on_delete=models.CASCADE)
 	commented_time = models.DateTimeField(auto_now_add=True, auto_now=False)
 	comment = models.CharField(max_length=250)

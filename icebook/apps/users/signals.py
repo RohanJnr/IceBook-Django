@@ -16,6 +16,6 @@ def resize_profile_pic(sender, instance, **kwargs):
 def delete_profile_pic(sender, instance, **kwargs):
     """Delete profile pic when User/Profile is deleted."""
     if instance.profile_picture:
-        if instance.image.name != "default.png":
-            path = instance.image.path
+        if instance.profile_picture.name != "default.png":
+            path = instance.profile_picture.path
             os.remove(path)

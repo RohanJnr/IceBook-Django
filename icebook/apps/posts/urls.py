@@ -2,9 +2,12 @@ from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
 
+
+app_name = "posts"
+
 urlpatterns = [
     path("add-post/", views.add_post_view, name="add-post"),
-    path("posts/", views.display_posts_view, name="display-posts"),
+    path("posts/", views.display_posts_view, name="list-posts"),
     path("posts/<int:pk>", views.detail_post_view, name="detail-post"),
     path("posts/<int:pk>/add-comment", views.comments_view, name="add-comment"),
     path("posts/<int:pk>/add-like/<str:destination>", views.like_view, name="like"),

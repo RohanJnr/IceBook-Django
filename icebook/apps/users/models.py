@@ -19,7 +19,11 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
-class UserProfile(models.Model):
+    def has_profile(self):
+        """Check if the User has a profile."""
+        return hasattr(self, "profile")
+
+class Profile(models.Model):
     """Profile to display user public details."""
     MALE = "M"
     FEMALE = "F"
@@ -30,7 +34,7 @@ class UserProfile(models.Model):
         (OTHER, "Other")
     ]
 
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     display_name = models.CharField(
             max_length=128,
             help_text="Name for identity.",
@@ -52,5 +56,5 @@ class UserProfile(models.Model):
         return f"{self.display_name}'s profile -> {self.user}"
 
 
-post_save.connect(resize_profile_pic, sender=UserProfile)
-post_delete.connect(delete_profile_pic, sender=UserProfile)
+post_save.connect(resize_profile_pic, sender=Profile)
+post_delete.connect(delete_profile_pic, sender=Profile)

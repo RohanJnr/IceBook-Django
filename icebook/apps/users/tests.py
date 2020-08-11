@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
+from .models import Profile
 
 class UserManagerTests(TestCase):
 
@@ -44,5 +45,5 @@ class UserManagerTests(TestCase):
             )
 
 
-class UserProfileTest(TestCase):
+class ProfileTest(TestCase):
     pass

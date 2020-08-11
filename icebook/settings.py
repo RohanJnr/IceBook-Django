@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 'icebook.apps.accounts', --> overhaul underway
-    # 'icebook.apps.posts', --> overhaul underway
+    'icebook.apps.posts',  #--> overhaul underway
 
     'icebook.apps.users',  # replacing accounts app WIP
 
@@ -135,5 +135,5 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, "icebook", "media")
 MEDIA_URL = "/media/"
 
-LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "profile"
+# LOGIN_URL = "users:home"
+# LOGIN_REDIRECT_URL = "profile"

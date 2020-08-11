@@ -6,9 +6,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path("", main_views.home_page, name="home"),
+    path("", include("icebook.apps.users.urls", namespace="users")),
+    path("", include('icebook.apps.posts.urls', namespace="posts")),
+
     # path('', include('icebook.apps.accounts.urls')),
-    # path('', include('icebook.apps.posts.urls'))
 ]
 
 if settings.DEBUG:
