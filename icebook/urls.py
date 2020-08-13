@@ -9,7 +9,6 @@ urlpatterns = [
     path("", include("icebook.apps.users.urls", namespace="users")),
     path("", include('icebook.apps.posts.urls', namespace="posts")),
 
-    # path('', include('icebook.apps.accounts.urls')),
 ]
 
 if settings.DEBUG:

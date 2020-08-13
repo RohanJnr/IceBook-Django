@@ -40,10 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # 'icebook.apps.accounts', --> overhaul underway
-    'icebook.apps.posts',  #--> overhaul underway
+    'icebook.apps.posts',
 
-    'icebook.apps.users',  # replacing accounts app WIP
+    'icebook.apps.users',
 
     # third party
     'crispy_forms'
