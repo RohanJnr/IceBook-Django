@@ -45,8 +45,16 @@ INSTALLED_APPS = [
     'icebook.apps.users',
 
     # third party
-    'crispy_forms'
+    'crispy_forms',
+    'rest_framework'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

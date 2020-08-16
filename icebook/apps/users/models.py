@@ -35,7 +35,7 @@ class Profile(models.Model):
     ]
 
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    display_name = models.CharField(
+    username = models.CharField(
             max_length=128,
             help_text="Name for identity.",
             unique=True,
@@ -50,10 +50,10 @@ class Profile(models.Model):
     website = models.URLField(max_length=300,null=True, blank=True)
 
     class Meta:
-        ordering = ["display_name"]
+        ordering = ["username"]
 
     def __str__(self):
-        return f"{self.display_name}'s profile -> {self.user}"
+        return f"{self.username}'s profile -> {self.user}"
 
 
 post_save.connect(resize_profile_pic, sender=Profile)

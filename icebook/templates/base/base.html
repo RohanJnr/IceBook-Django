@@ -13,7 +13,6 @@
 	{% endblock %}
 </head>
 <body data-media-url="{% get_media_prefix %}">
-	<div class="space"></div>
 	{% if messages %}
 		
 		{% for message in messages %}
@@ -25,7 +24,5 @@
 	{% endif %}
 	{% block content %}
 	{% endblock %}
-	<div class="space2"></div>
-	{% include "base/footer.html" %}
 </body>
 </html>
