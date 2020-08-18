@@ -1,3 +1,5 @@
+from django.db import connection
+
 from rest_framework import serializers
 
 from .models import Post
@@ -26,7 +28,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 
     def get_likes(self, obj):
-        return [user.profile.username for liked_user in obj.likes.all()]
+        return [liked_user.profile.username for liked_user in obj.likes.all()]
 
     def get_comments(self, obj):
         comments_dict = {}
@@ -41,4 +43,3 @@ class PostSerializer(serializers.ModelSerializer):
             user = request.user
             has_liked = user in obj.likes.all()
         return has_liked
-         

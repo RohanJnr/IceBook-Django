@@ -2,27 +2,39 @@
 {% load static %}
 <html>
 <head>
-	<link
-      href="https://fonts.googleapis.com/css?family=Quicksand:300,500"
-      rel="stylesheet"
-    />
-    <script src="https://kit.fontawesome.com/7b277203c6.js"\></script>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+	<script src="https://kit.fontawesome.com/7b277203c6.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-	<title>IceBook</title>
 	{% block head %}
+		<title>Title</title>
 	{% endblock %}
 </head>
 <body data-media-url="{% get_media_prefix %}">
-	{% if messages %}
-		
-		{% for message in messages %}
-		    <ul class="messages messages-{{ message.tags }}">
-		    	<li>{{ message }}</li>
-		    </ul>
-		 {% endfor %}
-		
-	{% endif %}
-	{% block content %}
-	{% endblock %}
+	<header>
+		<nav>
+			<div class="nav-logo">
+				<a href="{% url 'users:home' %}">icebook</a>
+			</div>
+			{% if request.user.is_authenticated %}
+				<form>
+					<input type="text" placeholder="Search">
+					<button class="search-btn"><i class="fas fa-search"></i></button>
+				</form>
+
+				<ul class="nav-list">
+					<li class="nav-link"><a href="#"><i class="fas fa-plus-circle"></i></a></li>
+					<li class="nav-link"><a href="#"><i class="fas fa-comments"></i></a></li>
+					<li class="nav-link"><a href="#"><i class="fas fa-user-friends"></i></a></li>
+					<li class="nav-link"><a class="nav-profile" href="#"><img src="{% static 'images/default.png' %}" alt="User-img" height=40" width="40"></a></li>
+				</ul>
+			{% else %}
+			{% endif %}
+		</nav>
+	</header>
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+	</div>
 </body>
 </html>

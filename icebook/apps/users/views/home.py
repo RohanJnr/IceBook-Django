@@ -17,6 +17,7 @@ class HomeLoginView(View):
 
     def get(self, request):
         # Redirect to posts page when already logged in.
+        print(request.COOKIES)
         if request.user.is_authenticated:
             return redirect("posts:list-posts")
 

@@ -1,0 +1,109 @@
+.post-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+header {
+  background: #fff;
+}
+
+header nav {
+  height: 8vh;
+  border-bottom: 2px #80605a solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav .nav-logo {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-family: 'Caveat', cursive;
+  text-align: center;
+  font-size: 2.5rem;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+header nav form {
+  text-align: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+header nav .search-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #80605a;
+}
+
+header nav .search-btn:hover {
+  cursor: pointer;
+  color: #644640;
+}
+
+header nav a {
+  color: #80605a;
+}
+
+header nav a:hover {
+  color: #644640;
+}
+
+header nav .nav-list {
+  text-align: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav .nav-list .nav-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  font-size: 2rem;
+  margin: 0 20px;
+}
+
+header nav .nav-list .nav-profile {
+  background: black;
+  padding: 20px;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=main.css.map */

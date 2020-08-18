@@ -46,7 +46,12 @@ INSTALLED_APPS = [
 
     # third party
     'crispy_forms',
-    'rest_framework'
+    'rest_framework',
+    'debug_toolbar',
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 REST_FRAMEWORK = {
@@ -57,6 +62,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'icebook.urls'
@@ -142,5 +149,5 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, "icebook", "media")
 MEDIA_URL = "/media/"
 
-# LOGIN_URL = "users:home"
-# LOGIN_REDIRECT_URL = "profile"
+LOGIN_URL = "users:home"
+LOGIN_REDIRECT_URL = "profile"

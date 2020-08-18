@@ -4,4 +4,6 @@ const getPosts  = async () => {
     return data
 }
 
-getPosts().then(data => console.log(data))
+getPosts()
+    .then(data => console.log(data))
+    .catch(reason => console.log(reason.message))

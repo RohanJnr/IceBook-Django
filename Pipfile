@@ -15,6 +15,7 @@ djangorestframework = "*"
 django = "*"
 markdown = "*"
 django-filter = "*"
+django-debug-toolbar = "*"
 
 [requires]
 python_version = "3.8"

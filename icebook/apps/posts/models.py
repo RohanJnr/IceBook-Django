@@ -10,10 +10,11 @@ from PIL import Image
 
 USER_MODEL = settings.AUTH_USER_MODEL
 
+
 class PostManager(models.Manager):
 
 	def get_posts(self, status: bool = False):
-		return self.get_queryset().prefetch_related("likes").prefetch_related("comments").filter(archived=status)
+		return self.get_queryset().select_related("user", "user__profile").prefetch_related("likes__profile", "comments__user__profile").filter(archived=status)
 
 class Post(models.Model):
 	user = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE)
@@ -36,7 +37,7 @@ class Post(models.Model):
 
 	class Meta:
 		ordering = ['-created']
-		
+
 	def save(self):
 		super().save()
 		if self.img:

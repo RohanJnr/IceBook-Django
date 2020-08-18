@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass -w  scss/ -o ../static/css/ --recursive"
+    "sass": "node-sass -w -r scss/ -o ../static/css/"
   },
   "author": "Rohan Reddy Alleti",
   "license": "MIT",

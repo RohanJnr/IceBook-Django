@@ -1,5 +1,107 @@
-$primary-color: #fff;
+@import "./variables";
+@import "./mixins";
+@import "./posts";
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 
 body{
-    background: $primary-color;
+    font-family: 'Roboto', sans-serif;
+    color: $text-color;
+    line-height: 2.5rem;
+    font-size: 1.2rem;
+}
+
+small{
+    color: $small-text-color;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(6, 116, 243);
+}
+
+button{
+    cursor: pointer;
+    background: none;
+    border: 2px limegreen solid;
+    padding: 10px;
+    font-size: 1.2rem;
+    transition-duration: 0.5s;
+
+    &:hover{
+        background: rgb(140, 223, 140);
+    }
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+}
+
+header {
+    background: #fff;
+    nav {
+        position: fixed;
+        background-color: #fff;
+        top: 0;
+        width: 100%;
+        height: 8vh;
+        border-bottom: 2px $navbar-text-color solid;
+        @include flex-starter();
+
+        .nav-logo{
+            flex: 1;
+            font-family: 'Caveat', cursive;
+            text-align: center;
+            font-size: 2.5rem;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+        
+        form{
+            text-align: center;
+            flex: 1;
+        }
+
+        .search-btn{
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: $navbar-text-color;
+
+            &:hover{
+                cursor: pointer;
+                color: $navbar-text-hover;
+            }
+        }
+
+        a{
+            color: $navbar-text-color;
+            &:hover{
+                color: $navbar-text-hover;
+            }
+        }
+
+        .nav-list {
+            text-align: center;
+            flex: 1;
+            @include flex-starter();
+
+            .nav-link {
+                @include flex-starter();
+                justify-content: start;
+                font-size: 2rem;
+                margin: 0 20px;
+            }
+
+            .nav-profile{
+                margin-top: 8px;
+                border-radius: 50%;
+            }
+        }
+    }
 }
