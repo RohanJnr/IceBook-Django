@@ -34,7 +34,7 @@ class Profile(models.Model):
         (OTHER, "Other")
     ]
 
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="profile")
     username = models.CharField(
             max_length=128,
             help_text="Name for identity.",
