@@ -1,5 +1,3 @@
-from django.shortcuts import get_object_or_404
-
 from rest_framework import status
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -7,15 +5,24 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from icebook.apps.posts.models import Post
-from icebook.apps.posts.serializers import PostSerializer
+
+from django.db import connection
 
 
-class DetailPost(APIView):
-    """Detail view for an individual Post."""
+class ToggleLike(APIView):
+    """List all Posts."""
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request, id, format=None):
-        post = get_object_or_404(Post, id=id)
-        serializer = PostSerializer(post, context={"request": request})
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        response = {}
+        user = request.user
+        post = Post.objects.get(id=id)
+        if user in post.likes.all():
+            post.likes.remove(user)
+            response["has_liked"] = False
+        else:
+            post.likes.add(user)
+            response["has_liked"] = True
+
+        return Response(response)

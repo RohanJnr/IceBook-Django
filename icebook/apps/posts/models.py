@@ -18,9 +18,8 @@ class PostManager(models.Manager):
 
 class Post(models.Model):
 	user = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE)
-	title = models.CharField(max_length=150)
+	title = models.CharField(max_length=200)
 	created = models.DateTimeField(auto_now_add=True, auto_now=False)
-	img = models.ImageField(upload_to="post_imgs", blank=True, null=True)
 	description = models.TextField()
 	likes = models.ManyToManyField(USER_MODEL, related_name="likes", blank=True)
 	comments = models.ManyToManyField(
@@ -37,16 +36,6 @@ class Post(models.Model):
 
 	class Meta:
 		ordering = ['-created']
-
-	def save(self):
-		super().save()
-		if self.img:
-			img = Image.open(self.img.path)
-
-			if img.height > 300 or img.width > 300:
-				output_size = (600, 600)
-				img.thumbnail(output_size)
-				img.save(self.img.path)
 
 
 class Comment(models.Model):

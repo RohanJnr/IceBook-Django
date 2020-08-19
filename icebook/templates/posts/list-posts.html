@@ -5,45 +5,53 @@
 {% block content %}
 
 <div class="posts">
-    <article class="post-container">
+    <!-- <article class="post-container">
         <section class="user-details">
-            <div class="post-user-profile">
+            <div class="user-profile-pic">
                 <img src="{% static 'images/default.png' %}" alt="User-img" height=50" width="50">
             </div>
-            <div class="user-data">
-                <p>RohanJnr</p>
+            <div>
+                <h4 class="author-name">RohanJnr</h4>
                 <small>Posted: 2h ago</small>
             </div>
         </section>
         <section class="post-data">
-            <img src="{% static 'images/example.jpg' %}" alt="post-img">
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, velit earum. Delectus dolorum eaque laborum, atque ab repudiandae, sequi accusantium nobis incidunt illum ipsa rem error odit dolorem. Ab, ut... 
-                <a href="#">Continue Reading >>></a>
-            </p>
-        </section>
-    </article>
-    <article class="post-container">
-        <section class="user-details">
-            <div class="post-user-profile">
-                <img src="{% static 'images/default.png' %}" alt="User-img" height=50" width="50">
-            </div>
-            <div class="user-data">
-                <p>RohanJnr</p>
-                <small>Posted: 2h ago</small>
+            <div class="markdown">
+                <h2 class="post-title"><a href="#">sdfa</a></h2>
+                <p><strong>Advertisement :)</strong></p>
             </div>
         </section>
-        <section class="post-data">
-            <!-- <img src="{% static 'images/example.jpg' %}" alt="post-img"> -->
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore officiis illo suscipit mollitia, labore nihil, minima quaerat exercitationem at aperiam reprehenderit accusamus laboriosam quae repellat. Totam, ab quo porro debitis, minus harum molestiae explicabo libero distinctio et magni rem perspiciatis voluptates deserunt quam, ex a quas suscipit sunt? Aperiam voluptate autem esse, ullam fugiat iure corporis officia. Ad quibusdam fuga, quidem ea officia earum tempore? Dolorem molestias odio dolores laboriosam voluptate perspiciatis cumque? Minus perspiciatis totam dolorum eum molestias autem asperiores accusantium neque nam nobis reiciendis magni nulla molestiae eos non officia praesentium, dolorem unde impedit saepe modi doloremque. Maiores!
-                <a href="#">Continue Reading >>></a>
-            </p>
+        <section class="social-btns">
+            <button class="social-btn likes">100<i class="far fa-thumbs-up"></i></button>
+            <button class="social-btn button">100<i class="far fa-comment"></i></button>
         </section>
-    </article>
+    </article> -->
 </div>
 
+<div class="post-comments">
+    <h2 class="title">Comments</h2>
+    <button class="exit-btn">Exit</button>
+    <section class="comments-section">
+        <!-- <div class="comment-container">
+            <div class="user-profile-pic">
+                <img src="{% static 'images/example.jpg' %}" alt="User-img" height=40" width="40">
+            </div>
+            <div class="comment">
+                <h3 class="author-name">RohanJnr</h3>
+                <p>This is a comment made my something idk anything about.</p>
+                <small>Posted on: date</small>
+            </div>
+        </div> -->
+    </section>
+    <section class="add-comment">
+        <form class="add-comment-form">
+            <input type="text" class="comment-input">
+            <button type="submit" class="add-comment-btn">Comment</button>
+        </form>
+    </section>
+</div>
 
-<script src="{% static 'js/list-posts.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.0/markdown-it.min.js"></script>
+<script type="module" src="{% static 'js/list-posts.js' %}"></script>
 
 {% endblock %}

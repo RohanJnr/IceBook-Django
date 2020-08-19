@@ -17,12 +17,11 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "user",
+            "title",
             "likes",
             "comments",
-            "title",
             "description",
             "created",
-            "img",
             "has_liked"
         ]
 

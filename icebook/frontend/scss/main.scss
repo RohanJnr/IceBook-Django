@@ -12,7 +12,7 @@ body{
     font-family: 'Roboto', sans-serif;
     color: $text-color;
     line-height: 2.5rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 small{
@@ -27,30 +27,25 @@ a{
 button{
     cursor: pointer;
     background: none;
-    border: 2px limegreen solid;
     padding: 10px;
     font-size: 1.2rem;
-    transition-duration: 0.5s;
-
-    &:hover{
-        background: rgb(140, 223, 140);
-    }
+    border: none;
 }
 
 .container{
-    width: 90%;
-    margin: auto;
+    width: 85%;
+    margin: 0 auto;
 }
 
 header {
-    background: #fff;
     nav {
+        z-index: 1;
         position: fixed;
-        background-color: #fff;
+        background-color: black;
         top: 0;
         width: 100%;
         height: 8vh;
-        border-bottom: 2px $navbar-text-color solid;
+        border-bottom: 2px brown solid;
         @include flex-starter();
 
         .nav-logo{

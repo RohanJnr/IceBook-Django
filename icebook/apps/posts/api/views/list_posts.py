@@ -1,5 +1,3 @@
-from django.db import connection
-
 from rest_framework import status
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -16,9 +14,6 @@ class ListPosts(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
-        print(len(connection.queries))
         posts = Post.objects.get_posts()
         serializer = PostSerializer(posts, many=True, context={"request": request})
-        print(serializer.data)
-        print(len(connection.queries))
         return Response(serializer.data, status=status.HTTP_200_OK)
