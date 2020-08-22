@@ -52,6 +52,10 @@ class Profile(models.Model):
     class Meta:
         ordering = ["username"]
 
+    def get_profile_picture_url(self, request):
+        pic_url = self.profile_picture.url
+        return request.build_absolute_uri(pic_url)
+
     def __str__(self):
         return f"{self.username}'s profile -> {self.user}"
 

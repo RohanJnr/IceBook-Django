@@ -1,6 +1,8 @@
 @import "./variables";
 @import "./mixins";
-@import "./posts";
+@import "./list-posts";
+@import "./detail_post";
+
 
 * {
     box-sizing: border-box;
@@ -95,7 +97,9 @@ header {
 
             .nav-profile{
                 margin-top: 8px;
-                border-radius: 50%;
+                img{
+                    border-radius: 50%;
+                }
             }
         }
     }

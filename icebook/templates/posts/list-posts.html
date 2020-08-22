@@ -3,7 +3,7 @@
 
 
 {% block content %}
-
+<div class="spinner"></div>
 <div class="posts">
     <!-- <article class="post-container">
         <section class="user-details">
@@ -29,8 +29,10 @@
 </div>
 
 <div class="post-comments">
-    <h2 class="title">Comments</h2>
-    <button class="exit-btn">Exit</button>
+    <div class="control-bar">
+        <h2 class="title">Comments</h2>
+        <button class="exit-btn">Exit</button>
+    </div>
     <section class="comments-section">
         <!-- <div class="comment-container">
             <div class="user-profile-pic">
@@ -52,6 +54,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.0/markdown-it.min.js"></script>
-<script type="module" src="{% static 'js/list-posts.js' %}"></script>
+<script type="module" src="{% static 'js/listPost/list-posts.js' %}"></script>
 
 {% endblock %}

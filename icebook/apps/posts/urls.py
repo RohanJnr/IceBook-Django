@@ -11,8 +11,8 @@ app_name = "posts"
 
 urlpatterns = [
     path("", include("icebook.apps.posts.api.urls")),
-    path("posts/", TemplateView.as_view(template_name="posts/list-posts.html"), name="list-posts"),
-    path("new-post", views.NewPost.as_view(), name="new-post")
+    path("posts/", views.ListPosts.as_view(), name="list-posts"),
+    path("add-post/", views.AddPost.as_view(), name="add-post"),
 ]
 
 # urlpatterns = [
