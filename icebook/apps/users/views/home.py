@@ -38,7 +38,7 @@ class HomeLoginView(View):
             user = authenticate(email=email, password=password)
             login(request, user)
 
-            return redirect("users:profile")
+            return redirect("posts:list-posts")
 
         context = {
             "login_form": login_form

@@ -2,8 +2,34 @@
 
 {% block content %}
 
-{{ request.user }}
-{{ user_posts }}
-{{ request.user.profile.display_name }}
+<section id="user-profile">
+    <div class="profile-pic">
+        <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture">
+        {% if request.user == user_profile.user %}
+            <div class="control-btns">
+                <button>Edit</button>
+                <button>Delete</button>
+            </div>
+        {% endif %}
+    </div>
+    <div class="user-data">
+        <h1>{{ user_profile.username }}</h1>
+        <div class="stats">
+            <span> <strong>0</strong> Posts</span>
+            <span> <strong>200</strong> Followers</span>
+            <span> <strong>419</strong> Following</span>
+        </div>
+        <p>{{ user_profile.bio }}</p>
+        <p>Website: <a href="{{ user_profile.website }}">{{ user_profile.website }}</a></p>
+    </div>
+</section>
+<section id="user-posts">
+    <button>Posts</button>
+    {% for post in user_posts %}
+        <div>
+            {{ post }}
+        </div>
+    {% endfor %}
+</section>
 
 {% endblock %}

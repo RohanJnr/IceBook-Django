@@ -1,27 +1,50 @@
-export const viewComments = (e, posts) => {
+import {commentMarkup} from "../markups.js";
+import {fetchComments, postComment} from "../apiCalls.js";
+
+export const viewComments = (e) => {
+    // Retrieve post ID from comment button.
+    const commentsDiv = document.querySelector(".post-comments");
     const commentsSection = document.querySelector(".comments-section");
     const postID = e.target.getAttribute("data-id");
-    const postComments = posts.find(element => element.id == postID).comments;
 
-    for (const [username, userData] of Object.entries(postComments)){
-        const commentsHTML = allCommentsHTML(username, userData)
-        commentsSection.insertAdjacentHTML('beforeend', commentsHTML);
-    }
+    // fetch Comments for specific post.
+    fetchComments(postID).then(comments => {
 
-    const commentsDiv = document.querySelector(".post-comments")
-    commentsDiv.classList.add("comments-slide")
+        // gather markup/HTML for each comment.
+        const finalMarkup = comments.reduce((markup, comment) => {
+            markup += commentMarkup(comment);
+            return markup;
+        }, " ")
 
-    const commentForm = document.querySelector(".add-comment-form")
+        // insert comment HTML/Markup.
+        commentsSection.insertAdjacentHTML('beforeend', finalMarkup);
 
-    commentForm.addEventListener("submit", e => {
-        e.preventDefault();
+        // toggle comment section animation.
+        commentsDiv.classList.add("comments-slide");
+    })
+    // form to add new comment.
+    const commentForm = document.querySelector(".add-comment-form");
+
+    commentForm.addEventListener("submit", form => {
+
+        form.preventDefault();
         const commentInputField = document.querySelector(".comment-input");
         const commentValue = commentInputField.value;
         commentInputField.value = "";
 
-        // TODO: append new comment to post obj.
+        // add comment via POST request to server.
+        postComment(commentValue, postID).then(result => {
+            // the result is a comment.
+            // TODO: handle errors
 
-        postComment(commentValue, postID, commentsSection);
+            const markup = commentMarkup(result)
+            commentsSection.insertAdjacentHTML("afterbegin", markup)
+
+            // update comment number on Span
+            const commentsNumSpan = document.querySelector(`.comments-no.post-${postID}`)
+            commentsNumSpan.innerText = +commentsNumSpan.innerText + 1;
+
+        })
     })
 
     const exitBtn = document.querySelector(".exit-btn")
@@ -31,55 +54,4 @@ export const viewComments = (e, posts) => {
     })
 }
 
-const allCommentsHTML = (username, userData) => {
-    let allCommentsMarkup = "";
 
-    for (const [comment, commentedTime] of Object.entries(userData.comments)) {
-
-        
-        allCommentsMarkup += commentMarkup(username, userData.profile_pic, comment, commentedTime);
-
-    }
-    return allCommentsMarkup
-}
-
-const postComment = async (comment, postID, commentsSection, posts) => {
-    const csrfToken = document.cookie.split(";").map(el => el.split("=")).find(element => {
-        if (element[0] === "csrftoken"){
-            return element
-        }
-    })[1];
-    const response = await fetch("/api/add-comment", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            'X-Requested-With': 'XMLHttpRequest',
-            'X-CSRFToken': csrfToken,
-        },
-        body: JSON.stringify({newComment: comment, postID: postID})
-    })
-    const result = await response.json()
-
-    commentsSection.insertAdjacentHTML("afterbegin", commentMarkup(
-        result.user.username,
-        result.user.profile_picture,
-        result.comment_object.comment,
-        result.comment_object.commented_time
-    ))
-}
-
-const commentMarkup = (username, profile_pic, comment, commentedTime) => {
-    const commentedTimeString = new Date(commentedTime).toDateString().replace(" ", ", ")
-    return `
-    <div class="comment-container">
-        <div class="user-profile-pic">
-            <img src="${profile_pic}" alt="User-img" height=40" width="40">
-        </div>
-        <div class="comment">
-            <h3 class="author-name">${username}</h3>
-            <p>${comment}</p>
-            <small>${commentedTimeString}</small>
-        </div>
-    </div>
-    `;
-}

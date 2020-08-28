@@ -23,6 +23,7 @@ class CustomUser(AbstractUser):
         """Check if the User has a profile."""
         return hasattr(self, "profile")
 
+
 class Profile(models.Model):
     """Profile to display user public details."""
     MALE = "M"
@@ -46,7 +47,7 @@ class Profile(models.Model):
             upload_to="profile_pics",
             default="default.png"
             )
-    bio = models.CharField(max_length=512, blank=True)
+    bio = models.CharField(max_length=256, blank=True)
     website = models.URLField(max_length=300,null=True, blank=True)
 
     class Meta:

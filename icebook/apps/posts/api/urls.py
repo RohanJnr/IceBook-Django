@@ -1,15 +1,16 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from rest_framework.urlpatterns import format_suffix_patterns
+
+from rest_framework.routers import DefaultRouter
 
 from . import views
 
-urlpatterns = [
-    path("api/posts", views.ListPosts.as_view(), name="list-posts-api"),
-    path("api/posts/<int:id>", views.DetailPost.as_view(), name="detail-post-api"),
-    path("api/toggle-like/<int:id>", views.ToggleLike.as_view(), name="toggle-like-api"),
-    path("api/add-comment", views.AddComment.as_view(), name="add-comment-api"),
-    path("api/add-post", views.AddPost.as_view(), name="add-post-api")
-]
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+router = DefaultRouter()
+router.register("posts", views.PostViewSet)
+
+urlpatterns = [
+    path("api/toggle-like/<int:id>", views.ToggleLike.as_view(), name="toggle-like-api"),
+    path("api/comment", views.CommentView.as_view(), name="add-comment-api"),
+    path("api/", include(router.urls))
+]

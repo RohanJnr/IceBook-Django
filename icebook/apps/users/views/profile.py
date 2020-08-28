@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from icebook.apps.users.forms import ProfileCreationForm
 from icebook.apps.posts.models import Post
+from icebook.apps.users.forms import ProfileCreationForm
+from icebook.apps.users.models import Profile
 
 
 class CreateProfileView(LoginRequiredMixin, View):
@@ -46,14 +47,18 @@ class ProfileView(LoginRequiredMixin, View):
 
     template_name = "users/profile.html"
 
-    def get(self, request):
+    def get(self, request, username):
         """Render User profile."""
-        user_posts = Post.objects.filter(user=request.user).select_related("user")
+
+        # adding prefetch and select related on 1 instance isn't going to help.
+        # TODO: research
+        user_profile = Profile.objects.get(username__iexact=username)
         
         context = {
-            "user_posts": user_posts
+            "user_profile": user_profile,
+            "user_posts": user_profile.user.post_set.all()
         }
-        return render(request, self.template_name,   context)
+        return render(request, self.template_name, context)
 
 
 class ProfileEditView(LoginRequiredMixin, View):

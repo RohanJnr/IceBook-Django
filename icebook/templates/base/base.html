@@ -26,9 +26,8 @@
 					<li class="nav-link"><a href="#"><i class="fas fa-plus-circle"></i></a></li>
 					<li class="nav-link"><a href="#"><i class="fas fa-comments"></i></a></li>
 					<li class="nav-link"><a href="#"><i class="fas fa-user-friends"></i></a></li>
-					<li class="nav-link"><a class="nav-profile" href="#"><img src="{{ request.user.profile.profile_picture.url }}" alt="User-img" height=40" width="40"></a></li>
+					<li class="nav-link"><a class="nav-profile" href="{% url 'users:profile' username=request.user.profile.username %}"><img src="{{ request.user.profile.profile_picture.url }}" alt="User-img" height=40" width="40"></a></li>
 				</ul>
-			{% else %}
 			{% endif %}
 		</nav>
 	</header>

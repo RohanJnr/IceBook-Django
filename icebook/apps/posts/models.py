@@ -14,6 +14,7 @@ class PostManager(models.Manager):
 	def get_posts(self, status: bool = False):
 		return self.get_queryset().select_related("user", "user__profile").prefetch_related("likes__profile", "comment_set__user__profile").filter(archived=status)
 
+
 class Post(models.Model):
 	user = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE)
 	title = models.CharField(max_length=200)

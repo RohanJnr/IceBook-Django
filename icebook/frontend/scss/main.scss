@@ -1,7 +1,7 @@
 @import "./variables";
 @import "./mixins";
 @import "./list-posts";
-@import "./detail_post";
+@import "./profile";
 
 
 * {
@@ -43,11 +43,11 @@ header {
     nav {
         z-index: 1;
         position: fixed;
-        background-color: black;
+        background-color: $navbar-background-color;
         top: 0;
         width: 100%;
         height: 8vh;
-        border-bottom: 2px brown solid;
+        border-bottom: 2px rgb(179, 168, 168) solid;
         @include flex-starter();
 
         .nav-logo{
