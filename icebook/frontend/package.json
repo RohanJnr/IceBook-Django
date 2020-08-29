@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass -w -r scss/ -o ../static/css/"
+    "sass": "node-sass -w -r scss/ -o ../static/css/",
+    "sass_compile": "node-sass -r scss/ -o ../static/css/"
   },
   "author": "Rohan Reddy Alleti",
   "license": "MIT",
