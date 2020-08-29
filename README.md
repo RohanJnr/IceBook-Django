@@ -15,7 +15,7 @@ This is a social media website built using django.
 - Create a new branch by doing the following:
   - **git checkout -b branch_name**
 ##### 2.Pipenv and migrations
-- Go to directory where the pipfile is and run **pipenv install**
+- Go to directory where the pipfile is and run **pipenv sync --dev**
 - Activate pipenv by doing **pipenv shell**
 - Go into the src folder where the manage.py sits and run the following:
   - **python manage.py makemigrations**
@@ -24,6 +24,7 @@ This is a social media website built using django.
 ##### 3.Super user and Profile
 - Create super user by doing the following:
   - **python manage.py createsuperuser**
+  - You need to manually create a profile for your user(this will be automated in the future.).
   
 ##### 4.Env vars
 - Go the the folder **icebook** where the settings.py file sits and create a file called **.env**
@@ -33,7 +34,9 @@ This is a social media website built using django.
 ##### 5.Running the server and Profile
 - Go the folder where your manage.py sits and the following commands to run the server:
   - **python manage.py runserver**
-- Go to django admin, login and make a profile for yourself or create a new user using the form at **http://localhost:8000/register/**
-and then your good to go with the site.
-- If you created a new user, make sure your logged in with the new user while working on the project(login at **http://localhost:8000/login/**).
-- If you made a profile for the super user from the django admin page, then your good to go.
+
+##### 6. Compile SCSS to CSS
+- Requires Node.js. Install -> https://nodejs.org/en/
+- cd into **icebook/frontend/** folder.
+- Run **npm run sass_compile** to compile all SCSS to CSS.
+- If you want to edit the SCSS, run **npm run sass** to enable watch feature.
