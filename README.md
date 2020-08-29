@@ -1,6 +1,10 @@
 # IceBook-Django
 This is a social media website built using django.
 
+# Want to contribute?
+- Email me at: rohanjnr44@gmail.com
+- Or contact me on dscord: Iceman#6508
+
 # Setup Guide
 
 ### requirements
