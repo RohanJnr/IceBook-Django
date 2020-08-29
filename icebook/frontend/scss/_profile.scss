@@ -1,0 +1,36 @@
+#user-profile{
+    width: 100%;
+    margin: 20vh auto 10vh auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    // background-color: rgb(233, 233, 233);
+    padding: 40px;
+
+    .profile-pic{
+        margin-right: 12vh;
+        img{
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+        }
+    .control-btns{
+        text-align: center;
+    }
+    }
+
+    .user-data{
+        .stats{
+            border-bottom: 2px grey solid;
+            padding: 5px 0;
+            margin: 10px 0;
+            span{
+                font-size: 1rem;
+                margin: 5px 10px 0px 0px;
+                strong{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

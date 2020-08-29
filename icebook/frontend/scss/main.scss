@@ -1,0 +1,106 @@
+@import "./variables";
+@import "./mixins";
+@import "./list-posts";
+@import "./profile";
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    color: $text-color;
+    line-height: 2.5rem;
+    font-size: 1.1rem;
+}
+
+small{
+    color: $small-text-color;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(6, 116, 243);
+}
+
+button{
+    cursor: pointer;
+    background: none;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: none;
+}
+
+.container{
+    width: 85%;
+    margin: 0 auto;
+}
+
+header {
+    nav {
+        z-index: 1;
+        position: fixed;
+        background-color: $navbar-background-color;
+        top: 0;
+        width: 100%;
+        height: 8vh;
+        border-bottom: 2px rgb(179, 168, 168) solid;
+        @include flex-starter();
+
+        .nav-logo{
+            flex: 1;
+            font-family: 'Caveat', cursive;
+            text-align: center;
+            font-size: 2.5rem;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+        
+        form{
+            text-align: center;
+            flex: 1;
+        }
+
+        .search-btn{
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: $navbar-text-color;
+
+            &:hover{
+                cursor: pointer;
+                color: $navbar-text-hover;
+            }
+        }
+
+        a{
+            color: $navbar-text-color;
+            &:hover{
+                color: $navbar-text-hover;
+            }
+        }
+
+        .nav-list {
+            text-align: center;
+            flex: 1;
+            @include flex-starter();
+
+            .nav-link {
+                @include flex-starter();
+                justify-content: start;
+                font-size: 2rem;
+                margin: 0 20px;
+            }
+
+            .nav-profile{
+                margin-top: 8px;
+                img{
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

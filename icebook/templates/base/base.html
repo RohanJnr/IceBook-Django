@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+	<script src="https://kit.fontawesome.com/7b277203c6.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	{% block head %}
+		<title>Title</title>
+	{% endblock %}
+</head>
+<body data-media-url="{% get_media_prefix %}">
+	<header>
+		<nav>
+			<div class="nav-logo">
+				<a href="{% url 'users:home' %}">icebook</a>
+			</div>
+			{% if request.user.is_authenticated %}
+				<form>
+					<input type="text" placeholder="Search">
+					<button class="search-btn"><i class="fas fa-search"></i></button>
+				</form>
+
+				<ul class="nav-list">
+					<li class="nav-link"><a href="#"><i class="fas fa-plus-circle"></i></a></li>
+					<li class="nav-link"><a href="#"><i class="fas fa-comments"></i></a></li>
+					<li class="nav-link"><a href="#"><i class="fas fa-user-friends"></i></a></li>
+					<li class="nav-link"><a class="nav-profile" href="{% url 'users:profile' username=request.user.profile.username %}"><img src="{{ request.user.profile.profile_picture.url }}" alt="User-img" height=40" width="40"></a></li>
+				</ul>
+			{% endif %}
+		</nav>
+	</header>
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+	</div>
+</body>
+</html>

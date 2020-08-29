@@ -1,0 +1,14 @@
+{
+  "name": "icebook-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w -r scss/ -o ../static/css/"
+  },
+  "author": "Rohan Reddy Alleti",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  }
+}
