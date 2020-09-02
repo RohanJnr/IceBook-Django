@@ -1,40 +1,42 @@
-{% extends 'base/base.html' %}
-{% load static %}
-
-
-{% block content %}
+{% extends 'base/base.html' %} {% load static %} {% block content %}
 <div class="spinner"></div>
 <div class="posts">
     <!-- <article class="post-container">
         <section class="user-details">
-            <div class="user-profile-pic">
-                <img src="{% static 'images/default.png' %}" alt="User-img" height=50" width="50">
-            </div>
-            <div>
-                <h4 class="author-name">RohanJnr</h4>
-                <small>Posted: 2h ago</small>
+            <div class="user-profile">
+                <img src="{% static 'images/default.png' %}" alt="User-img"
+                height=40" width="40">
+                <h4 class="author-name">Rohan</h4>
             </div>
         </section>
         <section class="post-data">
-            <div class="markdown">
-                <h2 class="post-title"><a href="#">sdfa</a></h2>
-                <p><strong>Advertisement :)</strong></p>
+            <div class="post-image">
+                <img src="{% static 'images/example.jpg' %}" alt="Post-img" />
             </div>
+            <p class="post-description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Adipisci, fugiat. Ullam ut, quae, quam sint repellat quos dolor
+                enim mollitia dolores amet nulla quod animi!
+            </p>
         </section>
         <section class="social-btns">
-            <button class="social-btn likes">100<i class="far fa-thumbs-up"></i></button>
-            <button class="social-btn button">100<i class="far fa-comment"></i></button>
+            <button class="social-btn likes">
+                100<i class="far fa-thumbs-up"></i>
+            </button>
+            <button class="social-btn button">
+                100<i class="far fa-comment"></i>
+            </button>
         </section>
     </article> -->
 </div>
 
-<div class="post-comments">
+<!-- <div class="post-comments">
     <div class="control-bar">
         <h2 class="title">Comments</h2>
         <button class="exit-btn">Exit</button>
     </div>
     <section class="comments-section">
-        <!-- <div class="comment-container">
+        <div class="comment-container">
             <div class="user-profile-pic">
                 <img src="{% static 'images/example.jpg' %}" alt="User-img" height=40" width="40">
             </div>
@@ -43,7 +45,7 @@
                 <p>This is a comment made my something idk anything about.</p>
                 <small>Posted on: date</small>
             </div>
-        </div> -->
+        </div>
     </section>
     <section class="add-comment">
         <form class="add-comment-form">
@@ -51,9 +53,8 @@
             <button type="submit" class="add-comment-btn">Comment</button>
         </form>
     </section>
-</div>
+</div> -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.0/markdown-it.min.js"></script>
 <script type="module" src="{% static 'js/listPost/list-posts.js' %}"></script>
 
 {% endblock %}

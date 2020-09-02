@@ -15,10 +15,10 @@ class PostSerializer(ModelSerializer):
         fields = (
             "id",
             "user",
-            "title",
             "num_likes",
             "num_comments",
             "description",
+            "image",
             "created",
             "has_liked"
         )
