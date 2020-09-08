@@ -35,9 +35,11 @@ This is a social media website built using django.
 - Add the following inside the file:
   - ```SECRET_KEY = 'secret_key_here' ```
   
-##### 5.Running the server and Profile
+##### 5.Running the server
 - Go the folder where your manage.py sits and the following commands to run the server:
   - **python manage.py runserver**
+  or
+  - **pipenv run start**
 
 ##### 6. Compile SCSS to CSS
 - Requires Node.js. Install -> https://nodejs.org/en/
