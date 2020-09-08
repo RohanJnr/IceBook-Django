@@ -6,6 +6,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
 	<script src="https://kit.fontawesome.com/7b277203c6.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	{% block head %}
 		<title>Title</title>
 	{% endblock %}
@@ -23,7 +24,7 @@
 				</form>
 
 				<ul class="nav-list">
-					<li class="nav-link"><a href="#"><i class="fas fa-plus-circle"></i></a></li>
+					<li class="nav-link"><a href="{% url 'posts:add-post' %}"><i class="fas fa-plus-circle"></i></a></li>
 					<li class="nav-link"><a href="#"><i class="fas fa-comments"></i></a></li>
 					<li class="nav-link"><a href="#"><i class="fas fa-user-friends"></i></a></li>
 					<li class="nav-link"><a class="nav-profile" href="{% url 'users:profile' username=request.user.profile.username %}"><img src="{{ request.user.profile.profile_picture.url }}" alt="User-img" height=40" width="40"></a></li>
@@ -32,6 +33,7 @@
 		</nav>
 	</header>
 	<div class="container">
+		<div class="spinner"></div>
 		{% block content %}
 		{% endblock %}
 	</div>

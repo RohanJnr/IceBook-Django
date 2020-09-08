@@ -4,11 +4,11 @@ export const generatePostHTML = (post) => {
     <article class="post-container">
         <section class="user-details">
             <div class="user-profile">
-                <img src="${
-                    post.user.profile_picture_url
-                }" alt="User-img"
+                <img src="${post.user.profile_picture_url}" alt="User-img"
                 height=40" width="40">
-                <h4 class="author-name">${post.user.username}</h4>
+                <h4 class="author-name"><a href="/profile/${
+                    post.user.username
+                }">${post.user.username}</a></h4>
             </div>
         </section>
         <section class="post-data">
@@ -33,13 +33,14 @@ export const generatePostHTML = (post) => {
     }"></i></button>
 
         </section>
+    
     </article>
     `;
     return html;
 };
 
 export const commentMarkup = (comment) => {
-    console.log("hello");
+    // TODO: need to be overhauled
     const commentedTimeString = new Date(comment.commented_time)
         .toDateString()
         .replace(" ", ", ");

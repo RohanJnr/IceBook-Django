@@ -9,5 +9,5 @@ export const routes = {
     },
     getPostDetail: "some route",
     postComment: "/api/comment",
-    postPost: "some route",  // send a POST request to add a `post` (blog post) to the database.
+    addPost: "/api/posts/",  // send a POST request to add a `post` (blog post) to the database.
 }

@@ -5,7 +5,7 @@ from icebook.apps.users.serializers import UserSerializer
 
 
 class PostSerializer(ModelSerializer):
-    user = UserSerializer()
+    user = UserSerializer(read_only=True)
     num_likes = SerializerMethodField()
     num_comments = SerializerMethodField()
     has_liked = SerializerMethodField()
