@@ -2,7 +2,12 @@
 @import "./mixins";
 @import "./list-posts";
 @import "./profile";
-
+@import "./add-post";
+*,
+*:focus,
+*:hover {
+    outline: none;
+}
 
 * {
     box-sizing: border-box;
@@ -10,33 +15,91 @@
     margin: 0;
 }
 
-body{
-    font-family: 'Roboto', sans-serif;
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: $body-background-color;
     color: $text-color;
     line-height: 2.5rem;
     font-size: 1.1rem;
 }
 
-small{
+small {
     color: $small-text-color;
 }
 
-a{
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+a {
     text-decoration: none;
     color: rgb(6, 116, 243);
 }
 
-button{
-    cursor: pointer;
-    background: none;
-    padding: 10px;
-    font-size: 1.2rem;
-    border: none;
+.container {
+    width: 85%;
+    margin: 10vh auto;
 }
 
-.container{
-    width: 85%;
-    margin: 0 auto;
+input[type="text"] {
+    padding: 6px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px grey solid;
+    overflow: hidden;
+}
+
+input[type="file"] {
+    font-size: 1.2rem;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px grey solid;
+}
+
+textarea {
+    padding: 10px;
+    resize: none;
+    border: 2px grey solid;
+    border-radius: 5px;
+}
+
+.asteriskField {
+    display: none;
+}
+
+label {
+    color: rgb(87, 87, 87);
+    margin: 10px 0;
+    font-size: 1.3rem;
+}
+
+.form-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    box-shadow: 0 0 10px 3px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+
+    button {
+        border: 2px grey solid;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        padding: 20px;
+        color: rgb(0, 0, 0);
+
+        &:hover {
+            background-color: rgb(233, 233, 233);
+        }
+    }
 }
 
 header {
@@ -50,35 +113,35 @@ header {
         border-bottom: 2px rgb(179, 168, 168) solid;
         @include flex-starter();
 
-        .nav-logo{
+        .nav-logo {
             flex: 1;
-            font-family: 'Caveat', cursive;
+            font-family: "Caveat", cursive;
             text-align: center;
             font-size: 2.5rem;
             border-radius: 50%;
             font-weight: bold;
         }
-        
-        form{
+
+        form {
             text-align: center;
             flex: 1;
         }
 
-        .search-btn{
+        .search-btn {
             background: none;
             border: none;
             font-size: 1.3rem;
             color: $navbar-text-color;
 
-            &:hover{
+            &:hover {
                 cursor: pointer;
                 color: $navbar-text-hover;
             }
         }
 
-        a{
+        a {
             color: $navbar-text-color;
-            &:hover{
+            &:hover {
                 color: $navbar-text-hover;
             }
         }
@@ -95,12 +158,18 @@ header {
                 margin: 0 20px;
             }
 
-            .nav-profile{
+            .nav-profile {
                 margin-top: 8px;
-                img{
+                img {
                     border-radius: 50%;
                 }
             }
         }
+    }
+}
+
+@media (max-width: 800px) {
+    header {
+        display: none;
     }
 }

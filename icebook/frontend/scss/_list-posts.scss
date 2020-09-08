@@ -1,4 +1,4 @@
-.spinner{
+.spinner {
     display: none;
     position: absolute;
     top: 15vh;
@@ -10,145 +10,88 @@
     animation: spin 1s infinite;
 }
 
-.spinner.active{
+.spinner.active {
     display: block;
 }
 
-@keyframes spin{
-    100%{
+@keyframes spin {
+    100% {
         transform: rotate(360deg);
     }
 }
 
-.liked{
+.liked {
     color: #3498db;
 }
 
-.post-container{
-    margin: 10vh 10vw;
-    box-shadow: 0px 10px 28px 0px rgba(0,0,0,0.75);
-    border-radius: 10px;
-    overflow: hidden;
+.posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .user-details{
-        background: $post-trim-color;
-        @include flex-starter();
-        font-size: 1.1rem;
+.post-container {
+    width: 800px;
+    height: auto;
+    margin: 5vh 0;
+    -webkit-box-shadow: 0px 0px 30px 7px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 30px 7px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 30px 7px rgba(0, 0, 0, 0.75);
+    .user-details {
+        background-color: $post-trim-color;
+        border-bottom: 1px rgb(192, 192, 192) solid;
+        .user-profile {
+            display: flex;
+            padding: 5px;
 
-        .user-profile-pic{
-            margin: 5px 10px 0 10px;
-            img{
+            img {
                 border-radius: 50%;
             }
-        }
 
-        .author-name{
-            color: white;
-        }
-    }
-    .post-data{
-        max-height: 60vh;
-        overflow-y: scroll;
-
-        .markdown{
-            margin: 10px 30px;
-            
-            ul{
-                margin-left: 30px;
+            .author-name a {
+                color: black;
+                font-size: 1.3rem;
+                margin-left: 10px;
             }
-
-            .post-title{
-                margin-bottom: 20px;
-                padding-bottom: 10px;
-                border-bottom: 2px rgb(196, 179, 179) solid;
-                display: inline-block;
-            }
-
         }
     }
 
-    .social-btns{
-        // background-color: $post-trim-color;
-        padding: 10px;
-        box-shadow: 0px 10px 28px 0px rgba(0,0,0,0.75);
-        font-size: 1.6rem;
-        .social-btn{
-            .social-btns{
+    .post-data {
+        .post-image img {
+            width: 100%;
+            max-height: 500px;
+        }
+        .posted-on {
+            padding: 10px 10px 0 10px;
+            font-size: 0.8rem;
+        }
+        .post-description {
+            padding: 0 10px;
+            color: $small-text-color;
+        }
+    }
+
+    .social-btns {
+        padding-left: 10px;
+        padding-bottom: 5px;
+        background-color: $post-trim-color;
+        .social-btn {
+            .social-btns {
                 padding: 0;
             }
-            i{
-                font-size: 1.6rem;
+            i {
+                font-size: 1.5rem;
                 margin: 0 10px;
             }
-
         }
     }
-
 }
 
-.post-comments {
-    position: absolute;
-    top: 15vh;
-    left: 30vw;
-    width: 30vw;
-    max-height: 70vh;
-    overflow-y: scroll;
-    padding: 10px;
-    box-shadow: 0px 10px 28px 0px rgba(0,0,0,0.75);
-    border-radius: 10px;
-    background: rgb(255, 255, 255);
-    transform: translateX(-100vw);
-
-    .control-bar{
-        @include flex-starter();
-        justify-content: space-between;
-    }
-
-    .comment-container{
-        display: flex;
-        margin: 20px 5px;
-    }
-    .user-profile-pic img{
-        margin: 10px;
-        border-radius: 50%;
-    }
-    .comment *{
-        display: inline;
-    }
-
-    .comment small{
-        display: block;
-    }
-
-}
-
-.comments-slide{
-    animation: slide 1s forwards;
-}
-
-.add-comment{
-    background: white;
-    position: sticky;
-    bottom: 0;
-    box-shadow: 0px 10px 28px 0px rgba(0,0,0,0.75);
-    padding: 10px;
-    border-radius: 5px;
-    @include flex-starter();
-    .add-comment-btn{
-        border: 2px grey solid;
-        font-size: 0.8rem;
-    }
-
-    .comment-input{
-        border: none;
-        border-bottom: 2px grey solid;
-        margin: 0 5px;
-        padding: 5px;
-    }
-}
-
-@keyframes slide {
-    100%{
-        transform: translateX(0);
+@media (max-width: 800px) {
+    .post-container {
+        width: 100vw;
+        box-shadow: none;
+        border-bottom: 2px rgb(211, 209, 209) solid;
+        margin: 0;
     }
 }
