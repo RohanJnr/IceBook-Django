@@ -17,17 +17,16 @@
 			<div class="nav-logo">
 				<a href="{% url 'users:home' %}">icebook</a>
 			</div>
-			{% if request.user.is_authenticated %}
+			{% if request.user.is_authenticated and request.user.has_profile %}
 				<form>
 					<input type="text" placeholder="Search">
 					<button class="search-btn"><i class="fas fa-search"></i></button>
 				</form>
 
 				<ul class="nav-list">
-					<li class="nav-link"><a href="{% url 'posts:add-post' %}"><i class="fas fa-plus-circle"></i></a></li>
-					<li class="nav-link"><a href="#"><i class="fas fa-comments"></i></a></li>
-					<li class="nav-link"><a href="#"><i class="fas fa-user-friends"></i></a></li>
-					<li class="nav-link"><a class="nav-profile" href="{% url 'users:profile' username=request.user.profile.username %}"><img src="{{ request.user.profile.profile_picture.url }}" alt="User-img" height=40" width="40"></a></li>
+					<li class="nav-link nav-link-text"><a href="{% url 'posts:add-post' %}">New Post</a></li>
+					<li class="nav-link nav-link-text"><a href="#">Chat</a></li>
+					<li class="nav-link nav-link-image"><a class="nav-profile" href="{% url 'users:profile' username=request.user.profile.username %}"><img src="{{ request.user.profile.profile_picture.url }}" alt="User-img" height=40" width="40"></a></li>
 				</ul>
 			{% endif %}
 		</nav>

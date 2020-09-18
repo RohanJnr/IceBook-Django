@@ -11,7 +11,7 @@ class PostViewSet(ModelViewSet):
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
-    queryset = Post.objects.get_posts()
+    queryset = Post.objects.get_posts(False)
     serializer_class = PostSerializer
     lookup_field = "id"
 
@@ -22,3 +22,10 @@ class PostViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        username = self.request.query_params.get("username", None)
+        if username is not None:
+            return queryset.filter(user__profile__username=username)
+        return queryset

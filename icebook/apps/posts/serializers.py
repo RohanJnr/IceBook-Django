@@ -9,6 +9,7 @@ class PostSerializer(ModelSerializer):
     num_likes = SerializerMethodField()
     num_comments = SerializerMethodField()
     has_liked = SerializerMethodField()
+    has_control = SerializerMethodField()
 
     class Meta:
         model = Post
@@ -20,25 +21,37 @@ class PostSerializer(ModelSerializer):
             "description",
             "image",
             "created",
-            "has_liked"
+            "has_liked",
+            "has_control",
+            "archived"
         )
         read_only_fields = ("user", "num_likes", "num_comments", "has_liked", "created")
 
     @staticmethod
     def get_num_likes(obj):
+        """Get Number of Likes."""
         return obj.likes.count()
 
     @staticmethod
     def get_num_comments(obj):
+        """Get Number of comments."""
         return obj.comment_set.count()
 
     def get_has_liked(self, obj):
+        """Check if current authenticated user has liked the Post."""
         has_liked = False
         request = self.context.get("request")
         if request:
             user = request.user
             has_liked = user in obj.likes.all()
         return has_liked
+
+    def get_has_control(self, obj):
+        """Check if current authenticated user is the author of the Post."""
+        request = self.context.get("request")
+        if request.user == obj.user:
+            return True
+        return False
 
 
 class CommentSerializer(ModelSerializer):

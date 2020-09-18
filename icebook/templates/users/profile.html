@@ -1,35 +1,103 @@
-{% extends "base/base.html" %}
-
-{% block content %}
+{% extends "base/base.html" %} {% load static %} {% block content %}
 
 <section id="user-profile">
     <div class="profile-pic">
-        <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture">
+        <img
+            src="{{ user_profile.profile_picture.url }}"
+            alt="Profile Picture"
+        />
         {% if request.user == user_profile.user %}
-            <div class="control-btns">
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
+        <div class="profile-btns">
+            <a href="#"><button>Edit</button></a>
+            <a href="#"><button>Delete</button></a>
+            <a href="{% url 'users:logout' %}"><button>Logout</button></a>
+        </div>
+        {% else %}
+        <div class="profile-btns">
+            <button>Follow</button>
+            <button>Message</button>
+        </div>
         {% endif %}
     </div>
     <div class="user-data">
         <h1>{{ user_profile.username }}</h1>
         <div class="stats">
-            <span> <strong>0</strong> Posts</span>
-            <span> <strong>200</strong> Followers</span>
-            <span> <strong>419</strong> Following</span>
+            <span>
+                <strong>{{ user_profile.user.post_set.count }}</strong>
+                Posts</span
+            >
+            <span> <strong>100</strong> Followers</span>
+            <span> <strong>100</strong> Following</span>
         </div>
         <p>{{ user_profile.bio }}</p>
-        <p>Website: <a href="{{ user_profile.website }}">{{ user_profile.website }}</a></p>
+        <p>
+            <strong>Website:</strong>
+            <a href="{{ user_profile.website }}">{{ user_profile.website }}</a>
+        </p>
     </div>
 </section>
 <section id="user-posts">
-    <button>Posts</button>
-    {% for post in user_posts %}
-        <div>
-            {{ post }}
-        </div>
-    {% endfor %}
+    <div class="heading">
+        <button id="posts-btn" class="active">Posts</button>
+        <!-- disable archive feature temporarily -->
+        <!-- {% if request.user == user_profile.user %}
+        <button id="archived-btn">Archived</button>
+        {% endif %} -->
+    </div>
+    <div id="profile-posts-div"></div>
+    <!-- post-template going inside `profile-posts-div -->
+    <!-- <article class="post-container">
+            <section class="user-details">
+                <div class="user-profile">
+                    <div class="left">
+                        <img src="{{ user_profile.profile_picture.url }}"
+                        alt="User-img" height=40" width="40">
+                        <h4 class="author-name">
+                            <a
+                                href="{% url 'users:profile' username=request.user.profile.username %}"
+                                >{{ user_profile.username }}</a
+                            >
+                        </h4>
+                    </div>
+                    <div class="right">
+                        {% if post.archived %}
+                        <button class="arch-btn">Unarchive</button>
+                        {% else %}
+                        <button class="arch-btn">Archive</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+            <section class="post-data">
+                <div class="post-image">
+                    <img src="{{ post.image.url }}" alt="Post-img" />
+                </div>
+                <small class="posted-on">{{ post.created }}</small>
+                <p class="post-description">{{ post.description }}</p>
+            </section>
+            <section class="social-btns">
+                <span class="likes-no post-{{ post.id }}"
+                    >{{ post.likes.count }}</span
+                ><button type="button" class="social-btn like-btn">
+                    {% if request.user in post.likes.all %}
+                    <i
+                        class="far fa-thumbs-up liked"
+                        data-id="{{ post.id }}"
+                    ></i>
+                    {% else %}
+                    <i class="far fa-thumbs-up" data-id="{{ post.id }}"></i>
+                    {% endif %}
+                </button>
+
+                <span class="comments-no post-{{ post.id }}"
+                    >{{ post.comment_set.count }}</span
+                ><button type="button" class="social-btn comment-btn">
+                    <i class="far fa-comment" data-id="{{ post.id }}"></i>
+                </button>
+            </section>
+        </article> -->
 </section>
+
+<script type="module" src="{% static 'js/profile/profile-view.js' %}"></script>
 
 {% endblock %}

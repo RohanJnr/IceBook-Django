@@ -3,7 +3,10 @@ export const iconClassNames = {
 };
 
 export const routes = {
-    getPosts: "some route",
+    getPosts: "/api/posts",
+    getUserPosts: username => {
+        return `/api/posts/?username=${username}`
+    },
     getComments: postID => {
         return `/api/comment?post_id=${postID}`
     },

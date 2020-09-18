@@ -34,11 +34,12 @@ class CustomUserLoginForm(forms.Form):
             if not user:
                 raise forms.ValidationError("Invalid login credentials!!", "invalid")
 
+
 class ProfileCreationForm(forms.ModelForm):
 
     class Meta:
         model = Profile
         exclude = ["user"]
         widgets = {
-            "bio": forms.Textarea(attrs={"cols": 80, "rows": 20}),
+            "bio": forms.Textarea(attrs={"cols": 80, "rows": 20})
         }

@@ -31,24 +31,57 @@
 }
 
 .post-container {
+    background-color: rgb(255, 255, 255);
     width: 800px;
     height: auto;
     margin: 5vh 0;
     -webkit-box-shadow: 0px 0px 30px 7px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 30px 7px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 30px 7px rgba(0, 0, 0, 0.75);
+
     .user-details {
-        background-color: $post-trim-color;
         border-bottom: 1px rgb(192, 192, 192) solid;
         .user-profile {
             display: flex;
+            justify-content: space-between;
             padding: 5px;
+
+            .left {
+                display: flex;
+            }
+
+            .right {
+                margin: 0 5px;
+
+                .control-btn {
+                    padding: 6px;
+                    font-size: 1rem;
+                    border-radius: 5px;
+                    color: white;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+
+                .edit-btn {
+                    background-color: #0674f3;
+                }
+
+                .delete-btn {
+                    background-color: red;
+                }
+            }
+            .no-control {
+                display: none;
+            }
 
             img {
                 border-radius: 50%;
             }
 
             .author-name a {
+                font-weight: normal;
                 color: black;
                 font-size: 1.3rem;
                 margin-left: 10px;
@@ -74,7 +107,6 @@
     .social-btns {
         padding-left: 10px;
         padding-bottom: 5px;
-        background-color: $post-trim-color;
         .social-btn {
             .social-btns {
                 padding: 0;

@@ -4,11 +4,17 @@ export const generatePostHTML = (post) => {
     <article class="post-container">
         <section class="user-details">
             <div class="user-profile">
-                <img src="${post.user.profile_picture_url}" alt="User-img"
-                height=40" width="40">
-                <h4 class="author-name"><a href="/profile/${
-                    post.user.username
-                }">${post.user.username}</a></h4>
+                <div class="left">
+                    <img src="${post.user.profile_picture_url}" alt="User-img"
+                    height=40" width="40">
+                    <h4 class="author-name"><a href="/profile/${
+                        post.user.username
+                    }">${post.user.username}</a></h4>
+                </div>
+                <div class="right ${post.has_control ? 'yes-control' : 'no-control'}">
+                    <button class="control-btn edit-btn">Edit</button>
+                    <button class="control-btn delete-btn">Delete</button>
+                </div>
             </div>
         </section>
         <section class="post-data">
@@ -23,7 +29,7 @@ export const generatePostHTML = (post) => {
             <span class="likes-no post-${post.id}">${
         post.num_likes
     }</span><button type="button" class="social-btn like-btn"><i class="far fa-thumbs-up ${
-        post.has_liked ? "liked" : "not-liked"
+        post.has_liked ? "liked" : ""
     }" data-id="${post.id}"></i></button>
 
             <span class="comments-no post-${post.id}">${

@@ -38,9 +38,22 @@ a {
     color: rgb(6, 116, 243);
 }
 
+
+
 .container {
-    width: 85%;
-    margin: 10vh auto;
+    width: 80%;
+    margin: 7vh auto;
+}
+
+.arch-btn {
+    display: none;
+    background: rgb(246, 240, 167);
+    padding: 10px;
+    border-radius: 5px;
+
+    &:hover {
+        background: $profile-btn-background-color;
+    }
 }
 
 input[type="text"] {
@@ -87,7 +100,6 @@ label {
     box-shadow: 0 0 10px 3px;
     padding: 20px;
     background: white;
-    border-radius: 10px;
 
     button {
         border: 2px grey solid;
@@ -118,8 +130,6 @@ header {
             font-family: "Caveat", cursive;
             text-align: center;
             font-size: 2.5rem;
-            border-radius: 50%;
-            font-weight: bold;
         }
 
         form {
@@ -154,8 +164,13 @@ header {
             .nav-link {
                 @include flex-starter();
                 justify-content: start;
-                font-size: 2rem;
+                font-size: 1.2rem;
                 margin: 0 20px;
+                padding: 5px;
+            }
+
+            .nav-link-text:hover {
+                background-color: $profile-btn-background-color;
             }
 
             .nav-profile {
@@ -171,5 +186,8 @@ header {
 @media (max-width: 800px) {
     header {
         display: none;
+    }
+    .container {
+        width: 100%;
     }
 }

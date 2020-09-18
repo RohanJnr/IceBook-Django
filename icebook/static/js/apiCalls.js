@@ -1,5 +1,5 @@
-import { routes } from "./variables.js";
-import { getCSRF } from "./utils.js";
+import {routes} from "./variables.js";
+import {getCSRF} from "./utils.js";
 
 export const addPost = async (formData, csrfToken) => {
     let res = await fetch(routes.addPost, {
@@ -40,10 +40,18 @@ export const postComment = async (comment, postID) => {
 
 export const getPosts = async () => {
     try {
-        let res = await fetch("/api/posts");
-        let posts = await res.json();
-        return posts;
+        let res = await fetch(routes.getPosts);
+        return await res.json();
     } catch (error) {
         alert(error);
     }
 };
+
+export const getUserPosts = async (username) => {
+    try {
+        let res = await fetch(routes.getUserPosts(username))
+        return await res.json()
+    } catch (error) {
+        alert(error)
+    }
+}
