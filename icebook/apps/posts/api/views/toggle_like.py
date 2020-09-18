@@ -10,7 +10,7 @@ from django.db import connection
 
 
 class ToggleLike(APIView):
-    """List all Posts."""
+    """Like a un-liked post and vice versa."""
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
