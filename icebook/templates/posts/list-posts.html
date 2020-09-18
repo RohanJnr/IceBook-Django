@@ -1,16 +1,22 @@
 {% extends 'base/base.html' %} {% load static %} {% block content %}
 <div class="posts">
+    <!-- post template -->
     <!-- <article class="post-container">
         <section class="user-details">
             <div class="user-profile">
-                <img src="{% static 'images/default.png' %}" alt="User-img"
-                height=40" width="40">
-                <h4 class="author-name">
-                    <a
-                        href="{% url 'users:profile' username=request.user.profile.username %}"
-                        >username</a
-                    >
-                </h4>
+                <div class="right">
+                    <img src="{% static 'images/default.png' %}" alt="User-img"
+                    height=40" width="40">
+                    <h4 class="author-name">
+                        <a
+                            href="{% url 'users:profile' username=request.user.profile.username %}"
+                            >username</a
+                        >
+                    </h4>
+                </div>
+                <div class="right">
+                    <button>Archive</button>
+                </div>
             </div>
         </section>
         <section class="post-data">
