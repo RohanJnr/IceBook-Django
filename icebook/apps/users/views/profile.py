@@ -1,3 +1,5 @@
+from django.core.handlers.wsgi import WSGIRequest
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -11,7 +13,7 @@ class CreateProfileView(LoginRequiredMixin, View):
 
     template_name = "users/create-profile.html"
 
-    def get(self, request):
+    def get(self, request: WSGIRequest) -> HttpResponse:
         """Render profile creation form."""
         if request.user.has_profile():
             return redirect("users:profile")
@@ -20,7 +22,7 @@ class CreateProfileView(LoginRequiredMixin, View):
         context = {"profile_form": profile_form}
         return render(request, self.template_name, context)
 
-    def post(self, request):
+    def post(self, request: WSGIRequest) -> HttpResponse:
         """Validate profile creation form and save."""
         profile_form = ProfileCreationForm(request.POST, request.FILES)
         if profile_form.is_valid():
@@ -40,7 +42,7 @@ class ProfileView(LoginRequiredMixin, View):
 
     template_name = "users/profile.html"
 
-    def get(self, request, username):
+    def get(self, request: HttpResponse, username: str) -> HttpResponse:
         """Render User profile."""
 
         # adding prefetch and select related on 1 instance isn't going to help.
@@ -55,8 +57,8 @@ class ProfileView(LoginRequiredMixin, View):
 
         context = {
             "user_profile": user_profile,
-            "user_posts": user_profile.user.post_set.all()
-            }
+            "user_posts": user_profile.user.post_set.all(),
+        }
         return render(request, self.template_name, context)
 
 
@@ -65,14 +67,14 @@ class ProfileEditView(LoginRequiredMixin, View):
 
     template_name = "users/edit-profile.html"
 
-    def get(self, request):
+    def get(self, request: WSGIRequest) -> HttpResponse:
         """Render profile form with User data."""
         user_profile = request.user.profile
         profile_form = ProfileCreationForm(instance=user_profile)
         context = {"profile_form": profile_form}
         return render(request, self.template_name, context)
 
-    def post(self, request):
+    def post(self, request: WSGIRequest) -> HttpResponse:
         """Update profile of User."""
         user_profile = request.user.profile
         profile_form = ProfileCreationForm(

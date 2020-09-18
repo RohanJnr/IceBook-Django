@@ -2,6 +2,7 @@ import os
 
 from PIL import Image
 
+
 def resize_profile_pic(sender, instance, **kwargs):
     """Resize profile picture when a profile instance is saved."""
     profile_pic = instance.profile_picture

@@ -1,0 +1,15 @@
+repos:
+    -   repo: https://github.com/psf/black
+        rev: stable
+        hooks:
+        - id: black
+          language_version: python3.8
+    -   repo: local
+        hooks:
+        -   id: flake8
+            name: Flake8
+            description: Run flake8 within env.
+            entry: pipenv run flake8
+            language: python
+            types: [python]
+            require_serial: true

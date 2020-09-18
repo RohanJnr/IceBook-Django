@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 flake8 = "*"
 flake8-annotations = "*"
+pre-commit = "*"
 
 [packages]
 pillow = "*"
@@ -22,6 +23,5 @@ python_version = "3.8"
 
 [scripts]
 start = "python manage.py runserver"
-migrate = "python src/manage.py migrate"
 test = "python manage.py test"
-lint = "flake8"
+lint = "pre-commit run --all-files"

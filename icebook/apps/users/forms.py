@@ -6,27 +6,25 @@ from .models import CustomUser, Profile
 
 
 class CustomUserCreationForm(UserCreationForm):
-
-    class Meta():
+    class Meta:
         model = CustomUser
         fields = ("first_name", "last_name", "email")
 
 
 class CustomUserChangeForm(UserChangeForm):
-
     class Meta:
         model = CustomUser
         fields = ("first_name", "last_name", "email")
 
 
 class CustomUserLoginForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'autofocus': True}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={"autofocus": True}))
     password = forms.CharField(
         strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password'}),
+        widget=forms.PasswordInput(attrs={"autocomplete": "current-password"}),
     )
 
-    def clean(self):
+    def clean(self) -> None:
         if self.is_valid():
             email = self.cleaned_data["email"]
             password = self.cleaned_data["password"]
@@ -36,10 +34,7 @@ class CustomUserLoginForm(forms.Form):
 
 
 class ProfileCreationForm(forms.ModelForm):
-
     class Meta:
         model = Profile
         exclude = ["user"]
-        widgets = {
-            "bio": forms.Textarea(attrs={"cols": 80, "rows": 20})
-        }
+        widgets = {"bio": forms.Textarea(attrs={"cols": 80, "rows": 20})}

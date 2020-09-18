@@ -15,32 +15,70 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('description', models.TextField()),
-                ('image', models.ImageField(upload_to='post_imgs')),
-                ('archived', models.BooleanField(default=False)),
-                ('likes', models.ManyToManyField(blank=True, related_name='likes', to=settings.AUTH_USER_MODEL)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200)),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("description", models.TextField()),
+                ("image", models.ImageField(upload_to="post_imgs")),
+                ("archived", models.BooleanField(default=False)),
+                (
+                    "likes",
+                    models.ManyToManyField(
+                        blank=True, related_name="likes", to=settings.AUTH_USER_MODEL
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-created'],
+                "ordering": ["-created"],
             },
         ),
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('commented_time', models.DateTimeField(auto_now_add=True)),
-                ('comment', models.CharField(max_length=250)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts.post')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("commented_time", models.DateTimeField(auto_now_add=True)),
+                ("comment", models.CharField(max_length=250)),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="posts.post"
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-commented_time'],
+                "ordering": ["-commented_time"],
             },
         ),
     ]
