@@ -8,7 +8,7 @@ This is a social media website built using django.
 # Setup Guide
 
 ### requirements
-- python3.7 or higher
+- python3.8 or higher
 - pipenv 
   - Get it by running **pip install pipenv**
 
