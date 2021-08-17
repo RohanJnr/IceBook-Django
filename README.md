@@ -3,7 +3,6 @@ This is a social media website built using django.
 
 # Want to contribute?
 - Email me at: rohanjnr44@gmail.com
-- Or contact me on discord: Iceman#6508
 
 # Setup Guide
 
