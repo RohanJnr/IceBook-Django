@@ -41,10 +41,14 @@ INSTALLED_APPS = [
     "icebook.apps.posts",
     "icebook.apps.users",
     # third party
+    'tailwind',
+    'theme',
     "crispy_forms",
     "rest_framework",
     # 'debug_toolbar',
 ]
+
+TAILWIND_APP_NAME = 'theme'
 
 INTERNAL_IPS = [
     "127.0.0.1",

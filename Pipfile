@@ -17,6 +17,7 @@ django = "*"
 markdown = "*"
 django-filter = "*"
 django-debug-toolbar = "*"
+django-tailwind = "*"
 
 [requires]
 python_version = "3.8"
